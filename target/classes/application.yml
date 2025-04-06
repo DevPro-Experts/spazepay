@@ -35,3 +35,6 @@ logging:
   file:
     name:
       logs/spazepay-app.log
+
+jwt:
+  secret: QW5vdGhlclNlY3JldEtleUZvckpXVC0xMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNA==

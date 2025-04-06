@@ -4,13 +4,14 @@ import com.spazepay.model.User;
 import com.spazepay.repository.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,10 +19,11 @@ import java.util.Map;
 @Service
 public class AuthService {
 
-    private final Key secretKey;
-
     private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
     private static final long EXPIRATION_TIME = 3600000; // 1 hour in milliseconds
+
+    @Value("${jwt.secret}")
+    private String secret;
 
     @Autowired
     private UserRepository userRepository;
@@ -31,11 +33,6 @@ public class AuthService {
 
     @Autowired
     private EmailService emailService;
-
-    @Autowired
-    public AuthService(Key jwtSecretKey) {
-        this.secretKey = jwtSecretKey; // Constructor injection
-    }
 
     public String login(String email, String password) {
         logger.info("Login attempt for email: {}", email);
@@ -57,10 +54,9 @@ public class AuthService {
                 .setSubject(user.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(secretKey, SignatureAlgorithm.HS512)
+                .signWith(Keys.hmacShaKeyFor(secret.getBytes()), SignatureAlgorithm.HS512)
                 .compact();
 
-        // Send email with account number
         try {
             emailService.sendLoginEmail(user.getEmail(), user.getFullName());
             logger.info("Email sent to: {}", user.getEmail());
@@ -73,20 +69,25 @@ public class AuthService {
         return token;
     }
 
-
     public User getUserFromToken(String token) {
         try {
             String email = Jwts.parserBuilder()
-                    .setSigningKey(secretKey)
+                    .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))
                     .build()
                     .parseClaimsJws(token)
                     .getBody()
                     .getSubject();
             logger.info("Token parsed, email: {}", email);
             return userRepository.findByEmail(email)
-                    .orElseThrow(() -> new IllegalArgumentException("Invalid token"));
+                    .orElseThrow(() -> new IllegalArgumentException("User not found for email: " + email));
+        } catch (io.jsonwebtoken.SignatureException e) {
+            logger.warn("JWT signature validation failed: {}", e.getMessage());
+            throw new IllegalArgumentException("Invalid token");
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
+            logger.warn("JWT token expired: {}", e.getMessage());
+            throw new IllegalArgumentException("Invalid token");
         } catch (Exception e) {
-            logger.warn("Invalid JWT token: {}", e.getMessage());
+            logger.warn("Unexpected error parsing JWT token: {}", e.getMessage(), e);
             throw new IllegalArgumentException("Invalid token");
         }
     }

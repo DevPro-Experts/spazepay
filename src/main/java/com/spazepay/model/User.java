@@ -30,6 +30,8 @@ public class User implements UserDetails {
     private String passportPhoto;
     private String password;
     private String role;
+    @Column(nullable = false, length = 4)
+    private String pin;
 
     // Default constructor
     public User() {}
