@@ -1,0 +1,16 @@
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/SpazePaySavingsAppApplication.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/config/BCryptConfig.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/config/JwtFilter.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/config/SecurityConfig.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/controller/AuthController.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/controller/RegistrationController.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/dto/LoginRequest.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/dto/RegistrationRequest.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/exception/GlobalExceptionHandler.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/model/Account.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/model/User.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/repository/AccountRepository.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/repository/UserRepository.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/service/AuthService.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/service/EmailService.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/service/RegistrationService.java

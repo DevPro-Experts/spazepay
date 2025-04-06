@@ -1,0 +1,3 @@
+com/spazepay/config/JwtFilter.class
+com/spazepay/config/BCryptConfig.class
+com/spazepay/SpazePaySavingsAppApplication.class

@@ -8,6 +8,7 @@ import com.spazepay.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -26,19 +27,31 @@ public class RegistrationService {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+
     public void register(RegistrationRequest request) {
-        // Validate and format phone number
-        String phoneNumber = validateAndFormatPhoneNumber(request.getPhoneNumber());
-        logger.info("Validated phone number: {}", phoneNumber);
+        logger.info("Processing registration for email: {}", request.getEmail());
+
+        // Check for existing email or phone number
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+            logger.warn("Email already registered: {}", request.getEmail());
+            throw new IllegalArgumentException("Email is already registered");
+        }
+        if (userRepository.findByPhoneNumber(request.getPhoneNumber()).isPresent()) {
+            logger.warn("Phone number already registered: {}", request.getPhoneNumber());
+            throw new IllegalArgumentException("Phone number is already registered");
+        }
 
         // Generate account number
-        String accountNumber = generateAccountNumber(phoneNumber);
+        String accountNumber = generateAccountNumber(request.getPhoneNumber());
         logger.info("Generated account number: {}", accountNumber);
 
         // Check for existing account number
         if (accountRepository.findByAccountNumber(accountNumber).isPresent()) {
             logger.warn("Account number {} already exists. Consider handling duplicates.", accountNumber);
-            throw new IllegalStateException("Account number already exists for phone number: " + phoneNumber);
+            throw new IllegalStateException("Account number already exists for phone number: " + request.getPhoneNumber());
         }
 
         // Create and save user
@@ -48,12 +61,14 @@ public class RegistrationService {
         user.setGender(request.getGender());
         user.setAddress(request.getAddress());
         user.setNationality(request.getNationality());
-        user.setPhoneNumber(phoneNumber);
+        user.setPhoneNumber(request.getPhoneNumber());
         user.setEmail(request.getEmail());
         user.setBvnOrNin(request.getBvnOrNin());
         user.setPassportPhoto(request.getPassportPhoto());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole("USER");
         userRepository.save(user);
-        logger.info("User saved with email: {}", user.getEmail());
+        logger.info("User saved with ID: {}", user.getId());
 
         // Create and save account
         Account account = new Account();
@@ -64,8 +79,13 @@ public class RegistrationService {
         logger.info("Account saved with number: {}", accountNumber);
 
         // Send email with account number
-        emailService.sendAccountNumberEmail(user.getEmail(), accountNumber);
-        logger.info("Email sent to: {}", user.getEmail());
+        try {
+            emailService.sendAccountNumberEmail(user.getEmail(), accountNumber);
+            logger.info("Email sent to: {}", user.getEmail());
+        } catch (Exception e) {
+            logger.error("Failed to send email to {}: {}", user.getEmail(), e.getMessage());
+            throw new RuntimeException("Registration succeeded, but email notification failed", e);
+        }
     }
 
     private String validateAndFormatPhoneNumber(String phoneNumber) {
@@ -93,6 +113,7 @@ public class RegistrationService {
         if (phoneNumber.startsWith("0")) {
             return phoneNumber.substring(1);
         }
+        logger.error("Invalid phone number format for account generation: {}", phoneNumber);
         throw new IllegalArgumentException("Phone number must start with 0");
     }
 }
