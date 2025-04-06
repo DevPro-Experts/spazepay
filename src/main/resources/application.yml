@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: SpacePay Savings App
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spaze_pay_savings_db
+    username: ndifrekealexander
+    password:
+    driver-class-name: org.postgresql.Driver
+    # JPA and Hibernate configuration
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Mailing configuration
+  mail:
+    host: localhost
+    port: 1025
+    username:
+    password:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: false # Disable STARTTLS for MailDev
+          auth: false
+
+logging:
+  level:
+    root: INFO
+    com.spazepay: DEBUG
+  file:
+    name:
+      logs/spazepay-app.log

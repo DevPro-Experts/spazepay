@@ -1,0 +1,46 @@
+2025-04-06T15:06:08.530+01:00  INFO 56934 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 56934 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-06T15:06:08.531+01:00 DEBUG 56934 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-06T15:06:08.531+01:00  INFO 56934 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-06T15:06:08.832+01:00  INFO 56934 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-06T15:06:08.858+01:00  INFO 56934 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 2 JPA repository interfaces.
+2025-04-06T15:06:09.093+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-06T15:06:09.101+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-06T15:06:09.101+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-06T15:06:09.126+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-06T15:06:09.127+01:00  INFO 56934 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 575 ms
+2025-04-06T15:06:09.206+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-06T15:06:09.236+01:00  INFO 56934 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-06T15:06:09.253+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-06T15:06:09.395+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-06T15:06:09.410+01:00  INFO 56934 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-06T15:06:09.472+01:00  INFO 56934 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7c0de229
+2025-04-06T15:06:09.473+01:00  INFO 56934 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-06T15:06:09.514+01:00  WARN 56934 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-06T15:06:09.523+01:00  INFO 56934 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-06T15:06:09.919+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-06T15:06:09.978+01:00  INFO 56934 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-06T15:06:10.155+01:00  WARN 56934 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-06T15:06:10.164+01:00  WARN 56934 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3405b2b5-8a98-44b7-982e-816b739c13db
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-06T15:06:10.176+01:00  INFO 56934 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-06T15:06:10.428+01:00  INFO 56934 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-06T15:06:10.434+01:00  INFO 56934 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 2.116 seconds (process running for 2.398)
+2025-04-06T15:06:21.108+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06T15:06:21.109+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-06T15:06:21.112+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-04-06T15:06:21.195+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.service.RegistrationService   : Validated phone number: 08012345678
+2025-04-06T15:06:21.195+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.service.RegistrationService   : Generated account number: 8012345678
+2025-04-06T15:06:21.338+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.service.RegistrationService   : User saved with email: john.doe@example.com
+2025-04-06T15:06:21.345+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.service.RegistrationService   : Account saved with number: 8012345678
+2025-04-06T15:06:21.527+01:00  INFO 56934 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.service.RegistrationService   : Email sent to: john.doe@example.com
