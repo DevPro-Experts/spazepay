@@ -67,6 +67,7 @@ public class RegistrationService {
         user.setPassportPhoto(request.getPassportPhoto());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole("USER");
+        user.setPin(request.getPin());
         userRepository.save(user);
         logger.info("User saved with ID: {}", user.getId());
 

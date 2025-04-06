@@ -47,4 +47,9 @@ public class RegistrationRequest {
 
     @NotBlank(message = "Passport photo is required")
     private String passportPhoto;
+
+    @NotBlank(message = "Pin is required")
+    @Size(min = 4, max = 4, message = "Pin must be 4 digits")
+    @Pattern(regexp = "\\d{4}", message = "Pin must be numeric")
+    private String pin;
 }
