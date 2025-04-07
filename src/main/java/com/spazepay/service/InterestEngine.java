@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
 
@@ -35,10 +36,11 @@ public class InterestEngine {
     @Autowired
     private MonthlyActivityRepository monthlyActivityRepository;
 
-    @Scheduled(cron = "0 0 0 1 * ?")
+    @Scheduled(cron = "0 * * * * ?", zone = "Africa/Lagos")
     @Transactional
     public void calculateMonthlyInterest() {
         String currentMonth = YearMonth.now().minusMonths(1).toString();
+        LocalDate now = LocalDate.now();
         List<SavingsPlan> activePlans = planRepository.findByUserIdAndStatus(null, PlanStatus.ACTIVE);
 
         for (SavingsPlan plan : activePlans) {
