@@ -104,6 +104,20 @@ public class SavingsService {
         plan.setPrincipalBalance(plan.getPrincipalBalance().add(new BigDecimal(request.getAmount())));
         planRepository.save(plan);
 
+        BigDecimal topUpAmount = new BigDecimal(request.getAmount());
+        // Validate and convert initial deposit
+        if (topUpAmount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Initial deposit must be greater than zero");
+        }
+        Account account = accountService.getAccountByUserId(user.getId());
+        if (account.getBalance().compareTo(topUpAmount) < 0) {
+            throw new IllegalStateException("Insufficient account balance");
+        }
+
+        // Deduct from account balance
+        account.setBalance(account.getBalance().subtract(topUpAmount));
+        accountRepository.save(account);
+
         SavingsTransaction tx = new SavingsTransaction();
         tx.setPlan(plan);
         tx.setType(TransactionType.TOPUP);
@@ -153,6 +167,11 @@ public class SavingsService {
         tx.setNetAmount(amount);
         transactionRepository.save(tx);
 
+        // Credit the payout to the user's account
+        Account account = accountService.getAccountByUserId(user.getId());
+        account.setBalance(account.getBalance().add(amount));
+        accountRepository.save(account);
+
         logger.info("Withdrawal from plan: {}, count: {}", plan.getId(), newCount);
         return new WithdrawResponse(plan.getPrincipalBalance(), newCount, activity.isInterestForfeited(),
                 "Withdrawal successful" + (activity.isInterestForfeited() ? ". Monthly interest will be forfeited." : ""));
@@ -181,6 +200,11 @@ public class SavingsService {
         plan.setStatus(PlanStatus.CLOSED);
         plan.setPrincipalBalance(BigDecimal.ZERO);
         planRepository.save(plan);
+
+        // Credit the payout to the user's account
+        Account account = accountService.getAccountByUserId(user.getId());
+        account.setBalance(account.getBalance().add(payout));
+        accountRepository.save(account);
 
         logger.info("Plan liquidated: {}", plan.getId());
         return new LiquidateResponse(plan.getPrincipalBalance(), interest, tax, payout, plan.getStatus().name());

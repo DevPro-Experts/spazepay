@@ -35,7 +35,7 @@ public class InterestEngine {
     @Autowired
     private MonthlyActivityRepository monthlyActivityRepository;
 
-    @Scheduled(cron = "0 0 0 1 * ?")
+    @Scheduled(cron = "0 * * * * ?", zone = "Africa/Lagos")
     @Transactional
     public void calculateMonthlyInterest() {
         String currentMonth = YearMonth.now().minusMonths(1).toString();
