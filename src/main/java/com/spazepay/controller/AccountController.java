@@ -4,8 +4,6 @@ import com.spazepay.dto.AccountBalanceResponse;
 import com.spazepay.dto.account.TopUpAccountRequest;
 import com.spazepay.dto.account.TopUpAccountResponse;
 import com.spazepay.model.Account;
-import com.spazepay.model.SavingsPlan;
-import com.spazepay.model.SavingsTransaction;
 import com.spazepay.model.User;
 import com.spazepay.service.AccountService;
 import org.slf4j.Logger;
@@ -16,7 +14,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/accounts")

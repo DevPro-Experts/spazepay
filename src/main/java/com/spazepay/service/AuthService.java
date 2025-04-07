@@ -1,5 +1,6 @@
 package com.spazepay.service;
 
+import com.spazepay.exception.InvalidJwtTokenException;
 import com.spazepay.model.User;
 import com.spazepay.repository.UserRepository;
 import io.jsonwebtoken.Jwts;
@@ -85,10 +86,10 @@ public class AuthService {
             throw new IllegalArgumentException("Invalid token");
         } catch (io.jsonwebtoken.ExpiredJwtException e) {
             logger.warn("JWT token expired: {}", e.getMessage());
-            throw new IllegalArgumentException("Invalid token");
+            throw new InvalidJwtTokenException("JWT token expired");
         } catch (Exception e) {
             logger.warn("Unexpected error parsing JWT token: {}", e.getMessage(), e);
-            throw new IllegalArgumentException("Invalid token");
+            throw new InvalidJwtTokenException("Invalid token");
         }
     }
 }

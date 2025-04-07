@@ -58,20 +58,35 @@ public class SavingsController {
         return ResponseEntity.ok(response);
     }
 
+    @PostMapping("/rollover/{planId}")
+    public ResponseEntity<SavingsPlanResponse> rolloverFlexiblePlan(@AuthenticationPrincipal User user,
+                                                                    @PathVariable Long planId,
+                                                                    @RequestBody @Valid RolloverRequest rolloverRequest) {
+        logger.info("Rollover request for plan: {}", planId);
+        SavingsPlanResponse response = savingsService.rolloverFlexiblePlan(user, planId, rolloverRequest);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/active")
-    public ResponseEntity<List<SavingsPlan>> getActivePlans(@AuthenticationPrincipal User user) {
-        List<SavingsPlan> plans = savingsService.getAllActivePlans(user);
+    public ResponseEntity<List<SavingsPlanResponseLite>> getActivePlansLite(
+            @AuthenticationPrincipal User user) {
+        List<SavingsPlanResponseLite> plans = savingsService.getAllActivePlansLite(user);
         return ResponseEntity.ok(plans);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SavingsPlan> getPlan(@AuthenticationPrincipal User user, @PathVariable Long id) {
-        return ResponseEntity.ok(savingsService.getPlanById(user, id));
+    public ResponseEntity<SavingsPlanResponseLite> getPlanLite(
+            @AuthenticationPrincipal User user,
+            @PathVariable Long id) {
+        return ResponseEntity.ok(savingsService.getPlanByIdLite(user, id));
     }
 
     @GetMapping("/{planId}/transactions")
-    public ResponseEntity<List<SavingsTransaction>> getTransactions(@AuthenticationPrincipal User user,
-                                                                    @PathVariable Long planId) {
-        return ResponseEntity.ok(savingsService.getTransactionsForPlan(user, planId));
+    public ResponseEntity<List<SavingsTransactionResponse>> getTransactions(
+            @AuthenticationPrincipal User user,
+            @PathVariable Long planId) {
+        logger.info("Fetching transactions for plan: {}", planId);
+        List<SavingsTransactionResponse> transactions = savingsService.getTransactionsForPlan(user, planId);
+        return ResponseEntity.ok(transactions);
     }
 }

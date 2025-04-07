@@ -9,4 +9,6 @@ import java.util.List;
 public interface SavingsPlanRepository extends JpaRepository<SavingsPlan, Long> {
     List<SavingsPlan> findByUserIdAndStatus(Long userId, PlanStatus status);
     long countByUserIdAndStatus(Long userId, PlanStatus status);
+
+    List<SavingsPlan> findByStatus(PlanStatus planStatus);
 }

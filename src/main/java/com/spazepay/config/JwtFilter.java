@@ -1,5 +1,6 @@
 package com.spazepay.config;
 
+import com.spazepay.exception.InvalidJwtTokenException;
 import com.spazepay.service.AuthService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,6 +32,8 @@ public class JwtFilter extends OncePerRequestFilter {
         String authHeader = request.getHeader("Authorization");
         logger.info("Received Authorization header: {}", authHeader);
 
+        final String requestURI = request.getRequestURI();
+
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
             logger.info("Extracted JWT token: {}", token);
@@ -48,8 +51,14 @@ public class JwtFilter extends OncePerRequestFilter {
                 } else {
                     logger.info("Authentication already set, skipping...");
                 }
-            } catch (Exception e) {
+            } catch (InvalidJwtTokenException e) {
                 logger.error("Failed to validate token: {}", e.getMessage());
+                if (!requestURI.equals("/api/auth/login") && !requestURI.equals("/api/auth/register")) {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\": \"JWT Expired\"}");
+                    return;
+                }
             }
         } else {
             logger.warn("No valid Bearer token found in Authorization header");

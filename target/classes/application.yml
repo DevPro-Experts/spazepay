@@ -32,6 +32,13 @@ logging:
   level:
     root: INFO
     com.spazepay: DEBUG
+    org:
+      springframework:
+        scheduling:
+          annotation:
+            ScheduledAnnotationBeanPostProcessor: DEBUG
+          support:
+            TaskUtils$LoggingErrorHandler: DEBUG
   file:
     name:
       logs/spazepay-app.log

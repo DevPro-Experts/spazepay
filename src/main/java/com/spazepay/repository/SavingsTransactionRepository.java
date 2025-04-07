@@ -12,4 +12,6 @@ public interface SavingsTransactionRepository extends JpaRepository<SavingsTrans
     List<SavingsTransaction> findByPlanIdAndTypeAndTimestampBetween(Long planId, TransactionType type, Instant start, Instant end);
 
     List<SavingsTransaction> findByPlan(SavingsPlan plan);
+
+    List<SavingsTransaction> findByPlanAndType(SavingsPlan plan, TransactionType transactionType);
 }

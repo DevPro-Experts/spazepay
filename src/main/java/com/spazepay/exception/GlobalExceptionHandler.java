@@ -38,4 +38,22 @@ public class GlobalExceptionHandler {
         logger.error("Unexpected error: {}", ex.getMessage(), ex);
         return new ResponseEntity<>("An unexpected error occurred. Please try again later.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(PrematureRolloverException.class)
+    public ResponseEntity<Object> handlePrematureRolloverException(PrematureRolloverException ex) {
+        logger.info("Handling PrematureRolloverException: {}", ex.getMessage());
+        Map<String, Object> body = new HashMap<>();
+        body.put("error", "Invalid Request");
+        body.put("message", ex.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidJwtTokenException.class)
+    public ResponseEntity<Object> handleInvalidJwtTokenException(InvalidJwtTokenException ex) {
+        logger.warn("Invalid JWT token: {}", ex.getMessage());
+        Map<String, Object> body = new HashMap<>();
+        body.put("error", "Authentication Failed");
+        body.put("message", ex.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
 }

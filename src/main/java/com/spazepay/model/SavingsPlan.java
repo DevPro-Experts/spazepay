@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "savings_plans")
@@ -36,10 +37,13 @@ public class SavingsPlan {
     private Instant createdAt;
 
     @Column(name = "matured_at")
-    private Instant maturedAt;
+    private LocalDateTime maturedAt;
 
     @Enumerated(EnumType.STRING)
     private SavingsType type; // To differentiate Flexible, Target, Fixed
+
+    @Column(precision = 19, scale = 2)
+    private BigDecimal accruedInterest = BigDecimal.ZERO;
 
     // Constructors
     public SavingsPlan() {
