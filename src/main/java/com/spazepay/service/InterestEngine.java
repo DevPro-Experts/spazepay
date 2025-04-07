@@ -36,7 +36,10 @@ public class InterestEngine {
     @Autowired
     private MonthlyActivityRepository monthlyActivityRepository;
 
-    @Scheduled(cron = "0 * * * * ?", zone = "Africa/Lagos")
+    @Autowired
+    private EmailService emailService;
+
+    @Scheduled(cron = "0 0 0 1 * *", zone = "Africa/Lagos")
     @Transactional
     public void calculateMonthlyInterest() {
         String currentMonth = YearMonth.now().minusMonths(1).toString();
@@ -68,9 +71,29 @@ public class InterestEngine {
             if (plan.getInterestHandling() == InterestHandling.COMPOUND) {
                 plan.setPrincipalBalance(plan.getPrincipalBalance().add(netInterest));
                 planRepository.save(plan);
+
+                emailService.sendHtmlEmail(
+                        plan.getUser().getEmail(),
+                        "Monthly Interest Accrued",
+                        "<html><body>" +
+                                "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
+                                "<p>Interest of " + netInterest + " has been compounded to your savings plan '" + plan.getName() + "'.</p>" +
+                                "<p>Current Balance: " + plan.getPrincipalBalance() + "</p>" +
+                                "<p>Thank you.</p>" +
+                                "</body></html>"
+                );
             } else {
                 // Transfer netInterest to main account (simplified)
                 logger.info("Interest withdrawn to main account for plan: {}", plan.getId());
+                emailService.sendHtmlEmail(
+                        plan.getUser().getEmail(),
+                        "Monthly Interest Paid Out",
+                        "<html><body>" +
+                                "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
+                                "<p>Interest of " + netInterest + " has been paid out to your main account from savings plan '" + plan.getName() + "'.</p>" +
+                                "<p>Thank you.</p>" +
+                                "</body></html>"
+                );
             }
         }
     }
