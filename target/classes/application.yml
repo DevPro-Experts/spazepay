@@ -21,6 +21,7 @@ spring:
     port: 1025
     username:
     password:
+    sender: info@spazepay.com
     properties:
       mail:
         smtp:

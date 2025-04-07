@@ -53,6 +53,9 @@ public class SavingsService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     private BigDecimal calculateDailyInterestRate() {
         return ANNUAL_INTEREST_RATE.divide(new BigDecimal(DAYS_IN_YEAR), 10, BigDecimal.ROUND_DOWN);
     }
@@ -88,6 +91,18 @@ public class SavingsService {
                 tx.setSource("system");
                 tx.setNetAmount(interestAccrued);
                 transactionRepository.save(tx);
+
+                emailService.sendHtmlEmail(
+                        plan.getUser().getEmail(),
+                        "Monthly Interest Accrued",
+                        "<html><body>" +
+                                "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
+                                "<p>Your daily interest of " + dailyInterestRate + " has been added to your accrued interest for your savings plan '" + plan.getName() + "'.</p>" +
+                                "<p>Accrued Interest: " + plan.getAccruedInterest() + "</p>" +
+                                "<p>Current Balance: " + plan.getPrincipalBalance() + "</p>" +
+                                "<p>Thank you.</p>" +
+                                "</body></html>"
+                );
 
                 logger.info("Daily interest of {} applied to plan {} for date {}", interestAccrued, plan.getId(), interestApplicableDate);
             }
@@ -134,6 +149,18 @@ public class SavingsService {
 
         logger.info("Flexible plan created: {}, deducted from account balance: {}", plan.getId(), initialDeposit);
         recordDailyBalance(plan, LocalDate.now(), new BigDecimal(request.getInitialDeposit()), BigDecimal.ZERO);
+
+        emailService.sendHtmlEmail(
+                user.getEmail(),
+                "New Savings Plan Created",
+                "<html><body>" +
+                        "<p>Dear " + user.getFullName() + ",</p>" +
+                        "<p>A new savings plan '" + plan.getName() + "' has been created successfully.</p>" +
+                        "<p>Initial Deposit: " + request.getInitialDeposit() + "</p>" +
+                        "<p>Maturity Date: " + (request.getMaturedAt() != null ? request.getMaturedAt().toString() : "N/A") + "</p>" +
+                        "<p>Thank you.</p>" +
+                        "</body></html>"
+        );
         return new SavingsPlanResponse(
                         plan.getId(),
                         plan.getStatus().name(),
@@ -187,6 +214,17 @@ public class SavingsService {
 
         logger.info("Top-up successful for plan: {}", plan.getId());
         recordDailyBalance(plan, LocalDate.now(), BigDecimal.ZERO, topUpAmount);
+
+        emailService.sendHtmlEmail(
+                user.getEmail(),
+                "Top-Up Successful",
+                "<html><body>" +
+                        "<p>Dear " + user.getFullName() + ",</p>" +
+                        "<p>You have successfully deposited " + request.getAmount() + " into your savings plan '" + plan.getName() + "'.</p>" +
+                        "<p>New Balance: " + plan.getPrincipalBalance() + "</p>" +
+                        "<p>Thank you.</p>" +
+                        "</body></html>"
+        );
         return new TopUpResponse(plan.getPrincipalBalance(), "Top-up successful");
     }
 
@@ -234,6 +272,17 @@ public class SavingsService {
 
         recordDailyBalance(plan, LocalDate.now(), BigDecimal.ZERO, amount);
         logger.info("Withdrawal from plan: {}, count: {}", plan.getId(), newCount);
+
+        emailService.sendHtmlEmail(
+                user.getEmail(),
+                "Savings Plan Withdrawal",
+                "<html><body>" +
+                        "<p>Dear " + user.getFullName() + ",</p>" +
+                        "<p>You have successfully withdrawn " + request.getAmount() + " from your savings plan '" + plan.getName() + "'.</p>" +
+                        "<p>New Balance: " + plan.getPrincipalBalance() + "</p>" +
+                        "<p>Thank you.</p>" +
+                        "</body></html>"
+        );
         return new WithdrawResponse(plan.getPrincipalBalance(), newCount, activity.isInterestForfeited(),
                 "Withdrawal successful" + (activity.isInterestForfeited() ? ". Monthly interest will be forfeited." : ""));
     }
@@ -268,6 +317,16 @@ public class SavingsService {
         accountRepository.save(account);
 
         logger.info("Plan liquidated: {}", plan.getId());
+        emailService.sendHtmlEmail(
+                user.getEmail(),
+                "Savings Plan Liquidation",
+                "<html><body>" +
+                        "<p>Dear " + user.getFullName() + ",</p>" +
+                        "<p>Your savings plan '" + plan.getName() + "' has been successfully liquidated.</p>" +
+                        "<p>Payout Amount: " + payout + "</p>" +
+                        "<p>Thank you.</p>" +
+                        "</body></html>"
+        );
         return new LiquidateResponse(plan.getPrincipalBalance(), interest, tax, payout, plan.getStatus().name());
     }
 
@@ -327,6 +386,17 @@ public class SavingsService {
         transactionRepository.save(newTx);
 
         logger.info("Plan {} rolled over to new plan {}", oldPlanId, newPlan.getId());
+        emailService.sendHtmlEmail(
+                user.getEmail(),
+                "Savings Plan Rollover Successful",
+                "<html><body>" +
+                        "<p>Dear " + user.getFullName() + ",</p>" +
+                        "<p>Your savings plan '" + oldPlan.getName() + "' has been successfully rolled over to a new plan '" + request.getNewPlanName() + "'.</p>" +
+                        "<p>Rollover Amount: " + rolloverPrincipal + "</p>" +
+                        "<p>New Maturity Date: " + (request.getNewMaturedAt() != null ? request.getNewMaturedAt().toString() : "N/A") + "</p>" +
+                        "<p>Thank you.</p>" +
+                        "</body></html>"
+        );
         return new SavingsPlanResponse(
                         newPlan.getId(),
                         newPlan.getStatus().name(),
