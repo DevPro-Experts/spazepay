@@ -22,6 +22,7 @@ import java.math.RoundingMode;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -184,7 +185,7 @@ public class InterestEngineIntegrationTest {
         tx2.setAmount(new BigDecimal("0.14"));
         tx2.setNetAmount(new BigDecimal("0.13"));
         tx2.setSource("system");
-        tx2.setTimestamp(Instant.parse(previousMonth + "-16T00:00:00Z"));
+        tx2.setTimestamp(Instant.now().minus(30, ChronoUnit.DAYS));
         transactionRepository.save(tx2);
 
         interestEngine.sendMonthlyInterestSummary();

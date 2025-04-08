@@ -1,4 +1,4 @@
-name: CI Pipeline for Develop
+name: CI Pipeline
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
         image: postgres:14
         env:
           POSTGRES_USER: ndifrekealexander
-          POSTGRES_PASSWORD: false
+          POSTGRES_PASSWORD: testpass123  # Use a valid password
           POSTGRES_DB: test_spaze_pay_savings_db
         ports:
           - 5432:5432
@@ -65,7 +65,7 @@ jobs:
             datasource:
               url: jdbc:postgresql://localhost:5432/test_spaze_pay_savings_db
               username: ndifrekealexander
-              password: 
+              password: testpass123  # Match the service password
               driver-class-name: org.postgresql.Driver
             jpa:
               hibernate:
@@ -94,5 +94,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-develop
+          name: test-results
           path: target/surefire-reports/
