@@ -1,6 +1,6 @@
 package com.spazepay.controller;
 
-import com.spazepay.dto.*;
+import com.spazepay.dto.savings.*;
 import com.spazepay.dto.transaction.SavingsTransactionResponse;
 import com.spazepay.model.User;
 import com.spazepay.service.SavingsService;

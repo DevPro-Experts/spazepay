@@ -1,6 +1,6 @@
 package com.spazepay.controller;
 
-import com.spazepay.dto.AccountBalanceResponse;
+import com.spazepay.dto.account.AccountBalanceResponse;
 import com.spazepay.dto.account.TopUpAccountRequest;
 import com.spazepay.dto.account.TopUpAccountResponse;
 import com.spazepay.dto.transaction.TransactionResponse;
@@ -8,6 +8,7 @@ import com.spazepay.model.Account;
 import com.spazepay.model.Transaction;
 import com.spazepay.model.User;
 import com.spazepay.service.AccountService;
+import com.spazepay.util.CurrencyFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,10 @@ public class AccountController {
     public ResponseEntity<AccountBalanceResponse> getBalance(@AuthenticationPrincipal User user) {
         logger.info("Balance request for user: {}", user.getEmail());
         Account account = accountService.getAccountByUserId(user.getId());
-        AccountBalanceResponse response = new AccountBalanceResponse(account.getAccountNumber(), account.getBalance());
+        AccountBalanceResponse response = new AccountBalanceResponse(
+                account.getAccountNumber(),
+                CurrencyFormatter.formatCurrency(account.getBalance())
+        );
         return ResponseEntity.ok(response);
     }
 
@@ -43,7 +47,10 @@ public class AccountController {
                                                              @RequestBody TopUpAccountRequest request) {
         logger.info("Top-up account request for user: {}, amount: {}", user.getEmail(), request.getAmount());
         BigDecimal newBalance = accountService.topUpAccount(user.getId(), new BigDecimal(request.getAmount()));
-        return ResponseEntity.ok(new TopUpAccountResponse(newBalance, "Account topped up successfully"));
+        return ResponseEntity.ok(new TopUpAccountResponse(
+                CurrencyFormatter.formatCurrency(newBalance),
+                "Account topped up successfully"
+        ));
     }
 
     @GetMapping("/{accountId}/transactions")
@@ -82,7 +89,7 @@ public class AccountController {
         TransactionResponse response = new TransactionResponse();
         response.setId(transaction.getId());
         response.setType(transaction.getType());
-        response.setAmount(transaction.getAmount());
+        response.setAmount(CurrencyFormatter.formatCurrency(transaction.getAmount()));
         response.setTransactionDate(transaction.getTransactionDate());
         return response;
     }

@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,7 +30,7 @@ public class Transaction {
 
     @CreationTimestamp
     @Column(name = "transaction_date", updatable = false)
-    private LocalDateTime transactionDate;
+    private Instant transactionDate;
 
     // Constructors, getters, and setters are handled by @Data
 }

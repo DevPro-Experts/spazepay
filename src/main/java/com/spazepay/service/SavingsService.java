@@ -1,6 +1,6 @@
 package com.spazepay.service;
 
-import com.spazepay.dto.*;
+import com.spazepay.dto.savings.*;
 import com.spazepay.dto.transaction.SavingsTransactionResponse;
 import com.spazepay.exception.PrematureRolloverException;
 import com.spazepay.model.*;
@@ -179,12 +179,12 @@ public class SavingsService {
         return new SavingsPlanResponse(
                 plan.getId(),
                 plan.getStatus().name(),
-                plan.getPrincipalBalance(),
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
                 plan.getName(),
                 plan.getMaturedAt(),
                 plan.getCreatedAt(),
                 plan.getType(),
-                plan.getAccruedInterest()
+                CurrencyFormatter.formatCurrency(plan.getAccruedInterest())
         );
     }
 
@@ -250,7 +250,10 @@ public class SavingsService {
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
-        return new TopUpResponse(plan.getPrincipalBalance(), "Top-up successful");
+        return new TopUpResponse(
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
+                "Top-up successful"
+        );
     }
 
     @Transactional
@@ -318,7 +321,10 @@ public class SavingsService {
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
-        return new WithdrawResponse(plan.getPrincipalBalance(), newCount, activity.isInterestForfeited(),
+        return new WithdrawResponse(
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
+                newCount,
+                activity.isInterestForfeited(),
                 "Withdrawal successful" + (activity.isInterestForfeited() ? ". Monthly interest will be forfeited." : ""));
     }
 
@@ -372,7 +378,13 @@ public class SavingsService {
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
-        return new LiquidateResponse(plan.getPrincipalBalance(), interest, tax, payout, plan.getStatus().name());
+        return new LiquidateResponse(
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
+                CurrencyFormatter.formatCurrency(interest),
+                CurrencyFormatter.formatCurrency(tax),
+                CurrencyFormatter.formatCurrency(payout),
+                plan.getStatus().name()
+        );
     }
 
     private SavingsPlan getActivePlan(User user, @NotNull Long planId) {
@@ -446,12 +458,12 @@ public class SavingsService {
         return new SavingsPlanResponse(
                 newPlan.getId(),
                 newPlan.getStatus().name(),
-                newPlan.getPrincipalBalance(),
+                CurrencyFormatter.formatCurrency(newPlan.getPrincipalBalance()),
                 newPlan.getName(),
                 newPlan.getMaturedAt(),
                 newPlan.getCreatedAt(),
                 newPlan.getType(),
-                newPlan.getAccruedInterest()
+                CurrencyFormatter.formatCurrency(newPlan.getAccruedInterest())
         );
     }
 

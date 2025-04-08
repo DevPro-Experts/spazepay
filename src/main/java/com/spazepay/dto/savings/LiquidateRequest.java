@@ -1,4 +1,4 @@
-package com.spazepay.dto;
+package com.spazepay.dto.savings;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

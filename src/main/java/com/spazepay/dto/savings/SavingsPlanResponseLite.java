@@ -1,4 +1,4 @@
-package com.spazepay.dto;
+package com.spazepay.dto.savings;
 
 import lombok.Data;
 import java.time.Instant;
