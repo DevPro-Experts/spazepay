@@ -1,10 +1,10 @@
 package com.spazepay.service;
 
 import com.spazepay.model.*;
-import com.spazepay.model.enums.InterestHandling;
 import com.spazepay.model.enums.PlanStatus;
 import com.spazepay.model.enums.SavingsType;
 import com.spazepay.model.enums.TransactionType;
+import com.spazepay.repository.DailyBalanceRepository;
 import com.spazepay.repository.MonthlyActivityRepository;
 import com.spazepay.repository.SavingsPlanRepository;
 import com.spazepay.repository.SavingsTransactionRepository;
@@ -25,8 +25,9 @@ import java.util.List;
 public class InterestEngine {
 
     private static final Logger logger = LoggerFactory.getLogger(InterestEngine.class);
-    private static final BigDecimal INTEREST_RATE = new BigDecimal("0.05"); // 5%
-    private static final BigDecimal TAX_RATE = new BigDecimal("0.10"); // 10%
+    private static final BigDecimal ANNUAL_INTEREST_RATE = new BigDecimal("0.05"); // 5% annual
+    private static final BigDecimal TAX_RATE = new BigDecimal("0.10"); // 10% tax
+    private static final int DAYS_IN_YEAR = 365;
 
     @Autowired
     private SavingsPlanRepository planRepository;
@@ -38,73 +39,134 @@ public class InterestEngine {
     private MonthlyActivityRepository monthlyActivityRepository;
 
     @Autowired
+    private DailyBalanceRepository dailyBalanceRepository;
+
+    @Autowired
     private EmailService emailService;
 
-    @Scheduled(cron = "0 0 0 1 * *", zone = "Africa/Lagos")
+    @Autowired
+    public InterestEngine(
+            SavingsPlanRepository planRepository,
+            DailyBalanceRepository dailyBalanceRepository,
+            SavingsTransactionRepository transactionRepository,
+            MonthlyActivityRepository monthlyActivityRepository,
+            EmailService emailService) {
+        this.planRepository = planRepository;
+        this.dailyBalanceRepository = dailyBalanceRepository;
+        this.transactionRepository = transactionRepository;
+        this.monthlyActivityRepository = monthlyActivityRepository;
+        this.emailService = emailService;
+    }
+
+    private BigDecimal calculateDailyInterestRate() {
+        return ANNUAL_INTEREST_RATE.divide(new BigDecimal(DAYS_IN_YEAR), 10, BigDecimal.ROUND_DOWN);
+    }
+
+    @Scheduled(cron = "0 0 0 * * *", zone = "Africa/Lagos")
     @Transactional
-    public void calculateMonthlyInterest() {
-        String currentMonth = YearMonth.now().minusMonths(1).toString();
-        LocalDate now = LocalDate.now();
-        List<SavingsPlan> activePlans = planRepository.findByUserIdAndStatus(null, PlanStatus.ACTIVE);
+    public void applyDailyInterest() {
+        LocalDate today = LocalDate.now();
+        LocalDate interestApplicableDate = today.minusDays(2); // Interest applies to net inflow 2 days ago
+        String currentMonth = YearMonth.now().toString();
+
+        List<SavingsPlan> activePlans = planRepository.findByStatus(PlanStatus.ACTIVE);
 
         for (SavingsPlan plan : activePlans) {
             if (plan.getType() != SavingsType.FLEXIBLE) continue;
 
+            // Check forfeiture status for the current month
             MonthlyActivity activity = monthlyActivityRepository.findByPlanIdAndMonth(plan.getId(), currentMonth)
                     .orElse(new MonthlyActivity());
             if (activity.isInterestForfeited()) {
-                logger.info("Interest forfeited for plan: {}", plan.getId());
+                logger.info("Daily interest forfeited for plan: {} due to monthly activity", plan.getId());
                 continue;
             }
 
-            BigDecimal interest = plan.getPrincipalBalance().multiply(INTEREST_RATE);
-            BigDecimal tax = interest.multiply(TAX_RATE);
-            BigDecimal netInterest = interest.subtract(tax);
+            // Find the confirmed net inflow for the interestApplicableDate
+            DailyBalance dailyBalance = dailyBalanceRepository.findByPlanIdAndDate(plan.getId(), interestApplicableDate)
+                    .orElse(null);
 
-            SavingsTransaction tx = new SavingsTransaction();
-            tx.setPlan(plan);
-            tx.setType(TransactionType.INTEREST);
-            tx.setAmount(interest);
-            tx.setSource("account");
-            tx.setNetAmount(netInterest);
-            transactionRepository.save(tx);
+            if (dailyBalance != null && dailyBalance.getNetBalance().compareTo(BigDecimal.ZERO) > 0) {
+                BigDecimal principalForInterest = dailyBalance.getNetBalance();
+                BigDecimal dailyInterestRate = calculateDailyInterestRate();
+                BigDecimal grossInterest = principalForInterest.multiply(dailyInterestRate).setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                BigDecimal tax = grossInterest.multiply(TAX_RATE).setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                BigDecimal netInterest = grossInterest.subtract(tax).setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
-            if (plan.getInterestHandling() == InterestHandling.COMPOUND) {
+                // Compound the net interest into the principal balance
                 plan.setPrincipalBalance(plan.getPrincipalBalance().add(netInterest));
                 planRepository.save(plan);
 
-                String formattedInterest = CurrencyFormatter.formatCurrency(netInterest);
+                // Record the interest transaction
+                SavingsTransaction tx = new SavingsTransaction();
+                tx.setPlan(plan);
+                tx.setType(TransactionType.INTEREST);
+                tx.setAmount(grossInterest);
+                tx.setSource("system");
+                tx.setNetAmount(netInterest);
+                transactionRepository.save(tx);
+
+                String formattedGrossInterest = CurrencyFormatter.formatCurrency(grossInterest);
+                String formattedNetInterest = CurrencyFormatter.formatCurrency(netInterest);
                 String formattedBalance = CurrencyFormatter.formatCurrency(plan.getPrincipalBalance());
 
                 emailService.sendHtmlEmail(
                         plan.getUser().getEmail(),
-                        "Monthly Interest Accrued",
+                        "Daily Interest Accrued",
                         "<html><body>" +
                                 "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
-                                "<p>Interest of " + formattedInterest + " has been compounded to your savings plan '" + plan.getName() + "'.</p>" +
+                                "<p>Daily interest of " + formattedGrossInterest + " (net: " + formattedNetInterest + " after tax) " +
+                                "has been compounded to your savings plan '" + plan.getName() + "'.</p>" +
                                 "<p>Current Balance: " + formattedBalance + "</p>" +
                                 "<p>Thank you.</p>" +
                                 "</body></html>"
                 );
-            } else {
-                // Transfer netInterest to main account (simplified)
-                logger.info("Interest withdrawn to main account for plan: {}", plan.getId());
-                String formattedInterest = CurrencyFormatter.formatCurrency(netInterest);
 
-                emailService.sendHtmlEmail(
-                        plan.getUser().getEmail(),
-                        "Monthly Interest Paid Out",
-                        "<html><body>" +
-                                "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
-                                "<p>Interest of " + formattedInterest + " has been paid out to your main account from savings plan '" + plan.getName() + "'.</p>" +
-                                "<p>Thank you.</p>" +
-                                "</body></html>"
-                );
+                logger.info("Daily interest of {} (net: {}) applied to plan {} for date {}",
+                        grossInterest, netInterest, plan.getId(), interestApplicableDate);
             }
         }
     }
 
-    @Scheduled(cron = "0 0 0 1 * ?")
+    @Scheduled(cron = "0 0 0 1 * *", zone = "Africa/Lagos") // Runs monthly on the 1st at midnight
+    @Transactional
+    public void sendMonthlyInterestSummary() {
+        String previousMonth = YearMonth.now().minusMonths(1).toString();
+        List<SavingsPlan> activePlans = planRepository.findByStatus(PlanStatus.ACTIVE);
+
+        for (SavingsPlan plan : activePlans) {
+            if (plan.getType() != SavingsType.FLEXIBLE) continue;
+
+            // Calculate total accrued interest for the previous month
+            List<SavingsTransaction> interestTransactions = transactionRepository
+                    .findByPlanAndTypeAndMonth(plan, TransactionType.INTEREST, previousMonth);
+            BigDecimal totalNetInterest = interestTransactions.stream()
+                    .map(SavingsTransaction::getNetAmount)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+            if (totalNetInterest.compareTo(BigDecimal.ZERO) > 0) {
+                String formattedTotalInterest = CurrencyFormatter.formatCurrency(totalNetInterest);
+                String formattedBalance = CurrencyFormatter.formatCurrency(plan.getPrincipalBalance());
+
+                emailService.sendHtmlEmail(
+                        plan.getUser().getEmail(),
+                        "Your Monthly Interest Summary",
+                        "<html><body>" +
+                                "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
+                                "<p>Congratulations! Last month, your savings plan '" + plan.getName() + "' earned a total of " +
+                                formattedTotalInterest + " in interest.</p>" +
+                                "<p>Current Balance: " + formattedBalance + "</p>" +
+                                "<p>Keep saving with us to watch your money grow!</p>" +
+                                "<p>Thank you.</p>" +
+                                "</body></html>"
+                );
+
+                logger.info("Monthly interest summary of {} sent for plan {}", totalNetInterest, plan.getId());
+            }
+        }
+    }
+
+    @Scheduled(cron = "0 0 0 1 * ?", zone = "Africa/Lagos") // Reset counters monthly
     public void resetMonthlyCounters() {
         String currentMonth = YearMonth.now().toString();
         List<MonthlyActivity> activities = monthlyActivityRepository.findAll();

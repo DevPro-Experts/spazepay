@@ -14,7 +14,6 @@ import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,10 +29,6 @@ import java.util.stream.Collectors;
 public class SavingsService {
 
     private static final Logger logger = LoggerFactory.getLogger(SavingsService.class);
-    private static final int MAX_ACTIVE_PLANS = 20;
-    private static final int MAX_PLANS_PER_DAY = 10;
-    private static final BigDecimal ANNUAL_INTEREST_RATE = new BigDecimal("0.05");
-    private static final int DAYS_IN_YEAR = 365; // 5% monthly for simplicity
 
     @Autowired
     private SavingsPlanRepository planRepository;
@@ -59,60 +54,8 @@ public class SavingsService {
     @Autowired
     private EmailService emailService;
 
-    private BigDecimal calculateDailyInterestRate() {
-        return ANNUAL_INTEREST_RATE.divide(new BigDecimal(DAYS_IN_YEAR), 10, BigDecimal.ROUND_DOWN);
-    }
-
-    @Transactional
-    public void applyDailyInterest() {
-        LocalDate today = LocalDate.now();
-        LocalDate interestApplicableDate = today.minusDays(2); // Interest applies to net inflow 2 days ago
-
-        List<SavingsPlan> activePlans = planRepository.findByStatus(PlanStatus.ACTIVE);
-
-        for (SavingsPlan plan : activePlans) {
-            if (plan.getType() != SavingsType.FLEXIBLE) continue;
-
-            // Find the confirmed net inflow for the interestApplicableDate
-            DailyBalance dailyBalance = dailyBalanceRepository.findByPlanIdAndDate(plan.getId(), interestApplicableDate)
-                    .orElse(null);
-
-            if (dailyBalance != null && dailyBalance.getNetBalance().compareTo(BigDecimal.ZERO) > 0) {
-                BigDecimal principalForInterest = dailyBalance.getNetBalance();
-                BigDecimal dailyInterestRate = calculateDailyInterestRate();
-                BigDecimal interestAccrued = principalForInterest.multiply(dailyInterestRate).setScale(2, BigDecimal.ROUND_HALF_EVEN);
-
-                // Add the accrued interest to the plan's principal balance
-                plan.setPrincipalBalance(plan.getPrincipalBalance().add(interestAccrued));
-                planRepository.save(plan);
-
-                // Record an interest transaction
-                SavingsTransaction tx = new SavingsTransaction();
-                tx.setPlan(plan);
-                tx.setType(TransactionType.INTEREST);
-                tx.setAmount(interestAccrued);
-                tx.setSource("system");
-                tx.setNetAmount(interestAccrued);
-                transactionRepository.save(tx);
-
-                String formattedInterest = CurrencyFormatter.formatCurrency(interestAccrued);
-                String formattedBalance = CurrencyFormatter.formatCurrency(plan.getPrincipalBalance());
-
-                emailService.sendHtmlEmail(
-                        plan.getUser().getEmail(),
-                        "Daily Interest Accrued",
-                        "<html><body>" +
-                                "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
-                                "<p>Daily interest of " + formattedInterest + " has been added to your accrued interest for your savings plan '" + plan.getName() + "'.</p>" +
-                                "<p>Current Balance: " + formattedBalance + "</p>" +
-                                "<p>Thank you.</p>" +
-                                "</body></html>"
-                );
-
-                logger.info("Daily interest of {} applied to plan {} for date {}", interestAccrued, plan.getId(), interestApplicableDate);
-            }
-        }
-    }
+    private static final int MAX_ACTIVE_PLANS = 20;
+    private static final int MAX_PLANS_PER_DAY = 10;
 
     @Transactional
     public SavingsPlanResponse createFlexiblePlan(User user, CreateFlexiblePlanRequest request) {
@@ -188,10 +131,8 @@ public class SavingsService {
         );
     }
 
-
     @Transactional
     public TopUpResponse topUpFlexiblePlan(User user, TopUpRequest request) {
-
         if (!user.getPin().equals(request.getPin())) {
             throw new IllegalArgumentException("Invalid PIN");
         }
@@ -325,7 +266,8 @@ public class SavingsService {
                 CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
                 newCount,
                 activity.isInterestForfeited(),
-                "Withdrawal successful" + (activity.isInterestForfeited() ? ". Monthly interest will be forfeited." : ""));
+                "Withdrawal successful" + (activity.isInterestForfeited() ? ". Monthly interest will be forfeited." : "")
+        );
     }
 
     @Transactional
@@ -335,10 +277,7 @@ public class SavingsService {
         MonthlyActivity activity = monthlyActivityRepository.findByPlanIdAndMonth(plan.getId(), currentMonth)
                 .orElse(new MonthlyActivity());
 
-        BigDecimal interest = calculateDailyInterestRate();
-        BigDecimal tax = interest.multiply(new BigDecimal("0.10")); // 10% tax
-        BigDecimal netInterest = interest.subtract(tax);
-        BigDecimal payout = plan.getPrincipalBalance().add(netInterest);
+        BigDecimal payout = plan.getPrincipalBalance(); // Simplified: no additional interest calculated here
 
         SavingsTransaction tx = new SavingsTransaction();
         tx.setPlan(plan);
@@ -380,8 +319,8 @@ public class SavingsService {
         );
         return new LiquidateResponse(
                 CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
-                CurrencyFormatter.formatCurrency(interest),
-                CurrencyFormatter.formatCurrency(tax),
+                CurrencyFormatter.formatCurrency(BigDecimal.ZERO), // No interest calculated here
+                CurrencyFormatter.formatCurrency(BigDecimal.ZERO), // No tax calculated here
                 CurrencyFormatter.formatCurrency(payout),
                 plan.getStatus().name()
         );
@@ -477,17 +416,6 @@ public class SavingsService {
         return totalInterest;
     }
 
-//    private BigDecimal calculateInterest(SavingsPlan plan) {
-//        // Simplified: 5% monthly interest
-//        return plan.getPrincipalBalance().multiply(INTEREST_RATE);
-//    }
-
-    @Scheduled(cron = "0 0 1 * * ?")
-    public void scheduleApplyDailyInterest() {
-        logger.info("Running daily interest calculation...");
-        applyDailyInterest();
-    }
-
     public List<SavingsPlanResponseLite> getAllActivePlansLite(User user) {
         List<SavingsPlan> plans = planRepository.findByUserIdAndStatus(user.getId(), com.spazepay.model.enums.PlanStatus.ACTIVE);
         return plans.stream()
@@ -535,7 +463,6 @@ public class SavingsService {
         todayBalance.setClosingBalance(newClosingBalance);
         dailyBalanceRepository.save(todayBalance);
     }
-
 
     private SavingsPlanResponseLite convertToSavingsPlanResponseLite(SavingsPlan plan) {
         SavingsPlanResponseLite response = new SavingsPlanResponseLite();
