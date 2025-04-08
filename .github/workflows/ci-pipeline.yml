@@ -41,6 +41,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Debug: Print branch and event details
+      - name: Debug trigger info
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Repository: ${{ github.repository }}"
+
       # Set up JDK 21 (based on your local logs)
       - name: Set up JDK 21
         uses: actions/setup-java@v4
