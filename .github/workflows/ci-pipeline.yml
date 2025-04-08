@@ -36,6 +36,12 @@ jobs:
           else
             echo "No application.yml found in src/main/resources"
           fi
+          if [ -f src/main/resources/application.properties ]; then
+            echo "Renaming application.properties to avoid override"
+            mv src/main/resources/application.properties src/main/resources/application.properties.bak
+          else
+            echo "No application.properties found in src/main/resources"
+          fi
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -67,7 +73,17 @@ jobs:
               show-sql: true
             profiles:
               active: test
+          app:
+            default:
+              currency: NGN
+          logging:
+            level:
+              org.springframework: DEBUG
+              org.hibernate: DEBUG
+              com.zaxxer.hikari: DEBUG
           EOF
+          echo "Generated application-test.yml:"
+          cat src/test/resources/application-test.yml
 
       - name: Build and test with debug
         run: mvn -B clean test -Ptest -e -X

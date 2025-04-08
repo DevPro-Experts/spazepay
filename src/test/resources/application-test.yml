@@ -10,3 +10,11 @@ spring:
     show-sql: true
   profiles:
     active: test
+app:
+  default:
+    currency: NGN
+logging:
+  level:
+    org.springframework: DEBUG
+    org.hibernate: DEBUG
+    com.zaxxer.hikari: DEBUG
