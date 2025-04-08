@@ -46,3 +46,8 @@ logging:
 
 jwt:
   secret: QW5vdGhlclNlY3JldEtleUZvckpXVC0xMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNA==
+
+
+app:
+  default:
+    currency: NGN

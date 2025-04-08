@@ -1,23 +1,19 @@
-package com.spazepay.dto;
+package com.spazepay.dto.savings;
 
 import lombok.Getter;
 
-import java.math.BigDecimal;
-
+// Updated
 @Getter
 public class WithdrawResponse {
-
-    // Getters
-    private BigDecimal newBalance;
+    private String principalBalance; // Changed to String
     private int withdrawalCount;
     private boolean interestForfeited;
     private String message;
 
-    public WithdrawResponse(BigDecimal newBalance, int withdrawalCount, boolean interestForfeited, String message) {
-        this.newBalance = newBalance;
+    public WithdrawResponse(String principalBalance, int withdrawalCount, boolean interestForfeited, String message) {
+        this.principalBalance = principalBalance;
         this.withdrawalCount = withdrawalCount;
         this.interestForfeited = interestForfeited;
         this.message = message;
     }
-
 }

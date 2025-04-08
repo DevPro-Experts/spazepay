@@ -1,8 +1,7 @@
 package com.spazepay.controller;
 
-import com.spazepay.dto.*;
-import com.spazepay.model.SavingsPlan;
-import com.spazepay.model.SavingsTransaction;
+import com.spazepay.dto.savings.*;
+import com.spazepay.dto.transaction.SavingsTransactionResponse;
 import com.spazepay.model.User;
 import com.spazepay.service.SavingsService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,8 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.List;
 
 @RestController

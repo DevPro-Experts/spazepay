@@ -1,6 +1,7 @@
 package com.spazepay.service;
 
-import com.spazepay.dto.*;
+import com.spazepay.dto.savings.*;
+import com.spazepay.dto.transaction.SavingsTransactionResponse;
 import com.spazepay.exception.PrematureRolloverException;
 import com.spazepay.model.*;
 import com.spazepay.model.enums.InterestHandling;
@@ -8,6 +9,7 @@ import com.spazepay.model.enums.PlanStatus;
 import com.spazepay.model.enums.SavingsType;
 import com.spazepay.model.enums.TransactionType;
 import com.spazepay.repository.*;
+import com.spazepay.util.CurrencyFormatter;
 import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +25,6 @@ import java.time.YearMonth;
 import java.time.chrono.ChronoLocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.hibernate.internal.CoreLogging.logger;
 
 @Service
 public class SavingsService {
@@ -52,6 +52,9 @@ public class SavingsService {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private TransactionRepository accountTransactionRepository;
 
     @Autowired
     private EmailService emailService;
@@ -92,14 +95,16 @@ public class SavingsService {
                 tx.setNetAmount(interestAccrued);
                 transactionRepository.save(tx);
 
+                String formattedInterest = CurrencyFormatter.formatCurrency(interestAccrued);
+                String formattedBalance = CurrencyFormatter.formatCurrency(plan.getPrincipalBalance());
+
                 emailService.sendHtmlEmail(
                         plan.getUser().getEmail(),
-                        "Monthly Interest Accrued",
+                        "Daily Interest Accrued",
                         "<html><body>" +
                                 "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
-                                "<p>Your daily interest of " + dailyInterestRate + " has been added to your accrued interest for your savings plan '" + plan.getName() + "'.</p>" +
-                                "<p>Accrued Interest: " + plan.getAccruedInterest() + "</p>" +
-                                "<p>Current Balance: " + plan.getPrincipalBalance() + "</p>" +
+                                "<p>Daily interest of " + formattedInterest + " has been added to your accrued interest for your savings plan '" + plan.getName() + "'.</p>" +
+                                "<p>Current Balance: " + formattedBalance + "</p>" +
                                 "<p>Thank you.</p>" +
                                 "</body></html>"
                 );
@@ -139,6 +144,13 @@ public class SavingsService {
         plan.setMaturedAt(request.getMaturedAt());
         planRepository.save(plan);
 
+        // Create Withdrawal Transaction on Account
+        Transaction transaction = new Transaction();
+        transaction.setAccount(account);
+        transaction.setType(TransactionType.DEPOSIT);
+        transaction.setAmount(initialDeposit);
+        accountTransactionRepository.save(transaction);
+
         SavingsTransaction tx = new SavingsTransaction();
         tx.setPlan(plan);
         tx.setType(TransactionType.TOPUP);
@@ -150,27 +162,30 @@ public class SavingsService {
         logger.info("Flexible plan created: {}, deducted from account balance: {}", plan.getId(), initialDeposit);
         recordDailyBalance(plan, LocalDate.now(), new BigDecimal(request.getInitialDeposit()), BigDecimal.ZERO);
 
+        String formattedDeposit = CurrencyFormatter.formatCurrency(
+                new BigDecimal(request.getInitialDeposit()));
+
         emailService.sendHtmlEmail(
                 user.getEmail(),
                 "New Savings Plan Created",
                 "<html><body>" +
                         "<p>Dear " + user.getFullName() + ",</p>" +
                         "<p>A new savings plan '" + plan.getName() + "' has been created successfully.</p>" +
-                        "<p>Initial Deposit: " + request.getInitialDeposit() + "</p>" +
+                        "<p>Initial Deposit: " + formattedDeposit + "</p>" +
                         "<p>Maturity Date: " + (request.getMaturedAt() != null ? request.getMaturedAt().toString() : "N/A") + "</p>" +
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
         return new SavingsPlanResponse(
-                        plan.getId(),
-                        plan.getStatus().name(),
-                        plan.getPrincipalBalance(),
-                        plan.getName(),
+                plan.getId(),
+                plan.getStatus().name(),
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
+                plan.getName(),
                 plan.getMaturedAt(),
                 plan.getCreatedAt(),
-                        plan.getType(),
-                        plan.getAccruedInterest()
-                );
+                plan.getType(),
+                CurrencyFormatter.formatCurrency(plan.getAccruedInterest())
+        );
     }
 
 
@@ -204,6 +219,13 @@ public class SavingsService {
         account.setBalance(account.getBalance().subtract(topUpAmount));
         accountRepository.save(account);
 
+        // Create Withdrawal Transaction on Account
+        Transaction transaction = new Transaction();
+        transaction.setAccount(account);
+        transaction.setType(TransactionType.DEPOSIT);
+        transaction.setAmount(BigDecimal.valueOf(request.getAmount()));
+        accountTransactionRepository.save(transaction);
+
         SavingsTransaction tx = new SavingsTransaction();
         tx.setPlan(plan);
         tx.setType(TransactionType.TOPUP);
@@ -215,17 +237,23 @@ public class SavingsService {
         logger.info("Top-up successful for plan: {}", plan.getId());
         recordDailyBalance(plan, LocalDate.now(), BigDecimal.ZERO, topUpAmount);
 
+        String formattedAmount = CurrencyFormatter.formatCurrency(new BigDecimal(request.getAmount()));
+        String formattedBalance = CurrencyFormatter.formatCurrency(plan.getPrincipalBalance());
+
         emailService.sendHtmlEmail(
                 user.getEmail(),
                 "Top-Up Successful",
                 "<html><body>" +
                         "<p>Dear " + user.getFullName() + ",</p>" +
-                        "<p>You have successfully deposited " + request.getAmount() + " into your savings plan '" + plan.getName() + "'.</p>" +
-                        "<p>New Balance: " + plan.getPrincipalBalance() + "</p>" +
+                        "<p>You have successfully deposited " + formattedAmount + " into your savings plan '" + plan.getName() + "'.</p>" +
+                        "<p>New Balance: " + formattedBalance + "</p>" +
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
-        return new TopUpResponse(plan.getPrincipalBalance(), "Top-up successful");
+        return new TopUpResponse(
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
+                "Top-up successful"
+        );
     }
 
     @Transactional
@@ -270,20 +298,33 @@ public class SavingsService {
         account.setBalance(account.getBalance().add(amount));
         accountRepository.save(account);
 
+        // Create Credit Transaction on Account
+        Transaction transaction = new Transaction();
+        transaction.setAccount(account);
+        transaction.setType(TransactionType.DEPOSIT);
+        transaction.setAmount(amount);
+        accountTransactionRepository.save(transaction);
+
         recordDailyBalance(plan, LocalDate.now(), BigDecimal.ZERO, amount);
         logger.info("Withdrawal from plan: {}, count: {}", plan.getId(), newCount);
+
+        String formattedAmount = CurrencyFormatter.formatCurrency(new BigDecimal(request.getAmount()));
+        String formattedBalance = CurrencyFormatter.formatCurrency(plan.getPrincipalBalance());
 
         emailService.sendHtmlEmail(
                 user.getEmail(),
                 "Savings Plan Withdrawal",
                 "<html><body>" +
                         "<p>Dear " + user.getFullName() + ",</p>" +
-                        "<p>You have successfully withdrawn " + request.getAmount() + " from your savings plan '" + plan.getName() + "'.</p>" +
-                        "<p>New Balance: " + plan.getPrincipalBalance() + "</p>" +
+                        "<p>You have successfully withdrawn " + formattedAmount + " from your savings plan '" + plan.getName() + "'.</p>" +
+                        "<p>New Balance: " + formattedBalance + "</p>" +
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
-        return new WithdrawResponse(plan.getPrincipalBalance(), newCount, activity.isInterestForfeited(),
+        return new WithdrawResponse(
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
+                newCount,
+                activity.isInterestForfeited(),
                 "Withdrawal successful" + (activity.isInterestForfeited() ? ". Monthly interest will be forfeited." : ""));
     }
 
@@ -316,22 +357,38 @@ public class SavingsService {
         account.setBalance(account.getBalance().add(payout));
         accountRepository.save(account);
 
+        // Create Credit Transaction on Account
+        Transaction transaction = new Transaction();
+        transaction.setAccount(account);
+        transaction.setType(TransactionType.DEPOSIT);
+        transaction.setAmount(payout);
+        accountTransactionRepository.save(transaction);
+
         logger.info("Plan liquidated: {}", plan.getId());
+
+        String formattedPayout = CurrencyFormatter.formatCurrency(payout);
+
         emailService.sendHtmlEmail(
                 user.getEmail(),
                 "Savings Plan Liquidation",
                 "<html><body>" +
                         "<p>Dear " + user.getFullName() + ",</p>" +
                         "<p>Your savings plan '" + plan.getName() + "' has been successfully liquidated.</p>" +
-                        "<p>Payout Amount: " + payout + "</p>" +
+                        "<p>Payout Amount: " + formattedPayout + "</p>" +
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
-        return new LiquidateResponse(plan.getPrincipalBalance(), interest, tax, payout, plan.getStatus().name());
+        return new LiquidateResponse(
+                CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()),
+                CurrencyFormatter.formatCurrency(interest),
+                CurrencyFormatter.formatCurrency(tax),
+                CurrencyFormatter.formatCurrency(payout),
+                plan.getStatus().name()
+        );
     }
 
     private SavingsPlan getActivePlan(User user, @NotNull Long planId) {
-        SavingsPlan plan = planRepository.findById(Long.valueOf(planId))
+        SavingsPlan plan = planRepository.findById(planId)
                 .orElseThrow(() -> new IllegalArgumentException("Plan not found"));
         if (!plan.getUser().getId().equals(user.getId()) || plan.getStatus() != PlanStatus.ACTIVE) {
             throw new IllegalArgumentException("Invalid or inactive plan");
@@ -352,6 +409,7 @@ public class SavingsService {
         BigDecimal withdrawalTax = accruedInterest.multiply(new BigDecimal("0.10"));
         BigDecimal netInterest = accruedInterest.subtract(withdrawalTax);
         BigDecimal rolloverPrincipal = oldPlan.getPrincipalBalance().add(netInterest);
+        String formattedRolloverPrincipal = CurrencyFormatter.formatCurrency(rolloverPrincipal);
 
         // Create the new plan
         SavingsPlan newPlan = new SavingsPlan();
@@ -392,21 +450,21 @@ public class SavingsService {
                 "<html><body>" +
                         "<p>Dear " + user.getFullName() + ",</p>" +
                         "<p>Your savings plan '" + oldPlan.getName() + "' has been successfully rolled over to a new plan '" + request.getNewPlanName() + "'.</p>" +
-                        "<p>Rollover Amount: " + rolloverPrincipal + "</p>" +
+                        "<p>Rollover Amount: " + formattedRolloverPrincipal + "</p>" +
                         "<p>New Maturity Date: " + (request.getNewMaturedAt() != null ? request.getNewMaturedAt().toString() : "N/A") + "</p>" +
                         "<p>Thank you.</p>" +
                         "</body></html>"
         );
         return new SavingsPlanResponse(
-                        newPlan.getId(),
-                        newPlan.getStatus().name(),
-                        newPlan.getPrincipalBalance(),
-                        newPlan.getName(),
+                newPlan.getId(),
+                newPlan.getStatus().name(),
+                CurrencyFormatter.formatCurrency(newPlan.getPrincipalBalance()),
+                newPlan.getName(),
                 newPlan.getMaturedAt(),
                 newPlan.getCreatedAt(),
-                        newPlan.getType(),
-                        newPlan.getAccruedInterest()
-                );
+                newPlan.getType(),
+                CurrencyFormatter.formatCurrency(newPlan.getAccruedInterest())
+        );
     }
 
     // Implement this method to calculate the total accrued interest for a plan
@@ -484,11 +542,11 @@ public class SavingsService {
         response.setId(plan.getId());
         response.setName(plan.getName());
         response.setStatus(plan.getStatus().name());
-        response.setPrincipalBalance(plan.getPrincipalBalance());
+        response.setPrincipalBalance(CurrencyFormatter.formatCurrency(plan.getPrincipalBalance()));
         response.setInterestHandling(plan.getInterestHandling().name());
         response.setCreatedAt(plan.getCreatedAt());
         response.setMaturedAt(plan.getMaturedAt());
-        response.setAccruedInterest(plan.getAccruedInterest());
+        response.setAccruedInterest(CurrencyFormatter.formatCurrency(plan.getAccruedInterest()));
         response.setType(plan.getType().name());
         return response;
     }
@@ -497,21 +555,21 @@ public class SavingsService {
         SavingsTransactionResponse response = new SavingsTransactionResponse();
         response.setId(transaction.getId());
         response.setType(transaction.getType().name());
-        response.setAmount(transaction.getAmount());
+        response.setAmount(CurrencyFormatter.formatCurrency(transaction.getAmount())); // Format and set
         response.setSource(transaction.getSource());
-        response.setNetAmount(transaction.getNetAmount());
+        response.setNetAmount(CurrencyFormatter.formatCurrency(transaction.getNetAmount())); // Format and set
         response.setTimestamp(transaction.getTimestamp());
 
         PlanInfo planInfo = new PlanInfo();
         planInfo.setId(transaction.getPlan().getId());
         planInfo.setName(transaction.getPlan().getName());
         planInfo.setStatus(transaction.getPlan().getStatus().name());
-        planInfo.setPrincipalBalance(transaction.getPlan().getPrincipalBalance());
+        planInfo.setPrincipalBalance(CurrencyFormatter.formatCurrency(transaction.getPlan().getPrincipalBalance()));
         planInfo.setInterestHandling(transaction.getPlan().getInterestHandling().name());
         planInfo.setCreatedAt(transaction.getPlan().getCreatedAt());
         planInfo.setMaturedAt(transaction.getPlan().getMaturedAt());
         planInfo.setType(transaction.getPlan().getType().name());
-        planInfo.setAccruedInterest(transaction.getPlan().getAccruedInterest());
+        planInfo.setAccruedInterest(CurrencyFormatter.formatCurrency(transaction.getPlan().getAccruedInterest()));
 
         response.setPlan(planInfo);
         return response;
