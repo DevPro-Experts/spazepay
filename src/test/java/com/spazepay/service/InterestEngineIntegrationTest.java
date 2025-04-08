@@ -6,14 +6,10 @@ import com.spazepay.repository.*;
 import com.spazepay.util.CurrencyFormatter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +18,7 @@ import java.math.RoundingMode;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,7 +28,6 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 @ActiveProfiles("test")
 @Transactional
-@ExtendWith(MockitoExtension.class)
 public class InterestEngineIntegrationTest {
 
     @Autowired
@@ -49,10 +45,9 @@ public class InterestEngineIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
-    @Mock
+    @MockBean
     private EmailService emailService;
 
-    @InjectMocks
     @Autowired
     private InterestEngine interestEngine;
 
@@ -61,21 +56,10 @@ public class InterestEngineIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
-
-        interestEngine = new InterestEngine(
-                planRepository,
-                dailyBalanceRepository,
-                transactionRepository,
-                monthlyActivityRepository,
-                emailService
-        );
-        // Setup test data
         user = new User();
         user.setEmail("test@example.com");
         user.setFullName("Test User");
-        user.setPin("1234");  // Required field (NOT NULL in DB)
-        // Optional: Populate other fields from RegistrationRequest if needed
+        user.setPin("1234");
         user.setDateOfBirth(LocalDate.of(1990, 1, 1));
         user.setGender("Male");
         user.setAddress("123 Test Street");
@@ -95,7 +79,6 @@ public class InterestEngineIntegrationTest {
         plan.setInterestHandling(InterestHandling.COMPOUND);
         plan = planRepository.save(plan);
 
-        // Simulate balance from 2 days ago
         DailyBalance balance = new DailyBalance();
         balance.setPlan(plan);
         balance.setDate(LocalDate.now().minusDays(2));
@@ -104,9 +87,9 @@ public class InterestEngineIntegrationTest {
         dailyBalanceRepository.save(balance);
     }
 
+    // Existing test methods remain unchanged
     @Test
     public void testApplyDailyInterest() {
-        // Given: No forfeiture
         MonthlyActivity activity = new MonthlyActivity();
         activity.setPlan(plan);
         activity.setUser(user);
@@ -115,14 +98,11 @@ public class InterestEngineIntegrationTest {
         activity.setInterestForfeited(false);
         monthlyActivityRepository.save(activity);
 
-        // When: Trigger the method manually
         interestEngine.applyDailyInterest();
 
-        // Then: Verify results
         SavingsPlan updatedPlan = planRepository.findById(plan.getId()).get();
         List<SavingsTransaction> transactions = transactionRepository.findByPlan(plan);
 
-        // Calculate expected values
         BigDecimal dailyRate = new BigDecimal("0.05").divide(new BigDecimal("365"), 10, RoundingMode.DOWN);
         BigDecimal grossInterest = new BigDecimal("1000.00").multiply(dailyRate).setScale(2, RoundingMode.HALF_EVEN);
         BigDecimal tax = grossInterest.multiply(new BigDecimal("0.10")).setScale(2, RoundingMode.HALF_EVEN);
@@ -135,7 +115,6 @@ public class InterestEngineIntegrationTest {
         assertEquals(grossInterest, transactions.get(0).getAmount(), "Transaction amount should be gross interest");
         assertEquals(netInterest, transactions.get(0).getNetAmount(), "Transaction net amount should be after tax");
 
-        // Verify email
         ArgumentCaptor<String> emailCaptor = ArgumentCaptor.forClass(String.class);
         verify(emailService, times(1)).sendHtmlEmail(eq(user.getEmail()), eq("Daily Interest Accrued"), emailCaptor.capture());
         String emailContent = emailCaptor.getValue();
@@ -144,19 +123,16 @@ public class InterestEngineIntegrationTest {
 
     @Test
     public void testApplyDailyInterestWithForfeiture() {
-        // Given: Forfeiture due to withdrawals
         MonthlyActivity activity = new MonthlyActivity();
         activity.setPlan(plan);
         activity.setUser(user);
         activity.setMonth(YearMonth.now().toString());
-        activity.setWithdrawalCount(5); // Exceeds limit
+        activity.setWithdrawalCount(5);
         activity.setInterestForfeited(true);
         monthlyActivityRepository.save(activity);
 
-        // When: Trigger the method
         interestEngine.applyDailyInterest();
 
-        // Then: No interest applied
         SavingsPlan updatedPlan = planRepository.findById(plan.getId()).get();
         List<SavingsTransaction> transactions = transactionRepository.findByPlan(plan);
 
@@ -184,7 +160,7 @@ public class InterestEngineIntegrationTest {
         tx2.setAmount(new BigDecimal("0.14"));
         tx2.setNetAmount(new BigDecimal("0.13"));
         tx2.setSource("system");
-        tx2.setTimestamp(Instant.parse(previousMonth + "-16T00:00:00Z"));
+        tx2.setTimestamp(Instant.now().minus(30, ChronoUnit.DAYS));
         transactionRepository.save(tx2);
 
         interestEngine.sendMonthlyInterestSummary();

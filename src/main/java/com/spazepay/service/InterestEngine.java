@@ -58,7 +58,7 @@ public class InterestEngine {
         this.emailService = emailService;
     }
 
-    private BigDecimal calculateDailyInterestRate() {
+    BigDecimal calculateDailyInterestRate() {
         return ANNUAL_INTEREST_RATE.divide(new BigDecimal(DAYS_IN_YEAR), 10, BigDecimal.ROUND_DOWN);
     }
 
