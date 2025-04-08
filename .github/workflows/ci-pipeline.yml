@@ -18,21 +18,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:14
-        env:
-          POSTGRES_USER: ndifrekealexander
-          POSTGRES_PASSWORD: testpass123
-          POSTGRES_DB: test_spaze_pay_savings_db
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -72,47 +57,17 @@ jobs:
           cat > src/test/resources/application-test.yml <<EOF
           spring:
             datasource:
-              url: jdbc:postgresql://localhost:5432/test_spaze_pay_savings_db
-              username: ndifrekealexander
-              password: testpass123
-              driver-class-name: org.postgresql.Driver
+              url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+              username: sa
+              password:
+              driver-class-name: org.h2.Driver
             jpa:
               hibernate:
                 ddl-auto: create-drop
               show-sql: true
             profiles:
               active: test
-          logging:
-            level:
-              org.springframework: DEBUG
-              org.hibernate: DEBUG
-              com.zaxxer.hikari: DEBUG
           EOF
-          echo "Generated application-test.yml:"
-          cat src/test/resources/application-test.yml
-
-      - name: Wait for PostgreSQL
-        run: |
-          echo "Waiting for PostgreSQL to be ready..."
-          for i in {1..30}; do
-            if pg_isready -h localhost -p 5432 -U ndifrekealexander -d test_spaze_pay_savings_db -q; then
-              echo "PostgreSQL is ready!"
-              break
-            fi
-            echo "Waiting... ($i/30)"
-            sleep 2
-          done
-
-      - name: Test PostgreSQL connection
-        run: |
-          echo "Testing PostgreSQL connection..."
-          PGPASSWORD=testpass123 psql -h localhost -p 5432 -U ndifrekealexander -d test_spaze_pay_savings_db -c "SELECT 1;"
-          if [ $? -eq 0 ]; then
-            echo "Connection successful!"
-          else
-            echo "Connection failed!"
-            exit 1
-          fi
 
       - name: Build and test with debug
         run: mvn -B clean test -Ptest -e -X
