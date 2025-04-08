@@ -458,3 +458,931 @@ This generated password is for development use only. Your security configuration
 2025-04-08T00:39:29.852+01:00  INFO 63494 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-04-08T00:39:29.852+01:00  INFO 63494 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-04-08T00:39:29.854+01:00  INFO 63494 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-04-08T00:48:17.058+01:00  INFO 65353 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 65353 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T00:48:17.059+01:00 DEBUG 65353 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T00:48:17.060+01:00  INFO 65353 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T00:48:17.593+01:00  INFO 65353 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T00:48:17.631+01:00  INFO 65353 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+2025-04-08T00:48:18.072+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T00:48:18.081+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T00:48:18.081+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T00:48:18.105+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T00:48:18.105+01:00  INFO 65353 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1022 ms
+2025-04-08T00:48:18.263+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T00:48:18.293+01:00  INFO 65353 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T00:48:18.311+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T00:48:18.456+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T00:48:18.471+01:00  INFO 65353 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T00:48:18.548+01:00  INFO 65353 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@37e64e37
+2025-04-08T00:48:18.549+01:00  INFO 65353 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T00:48:18.593+01:00  WARN 65353 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T00:48:18.602+01:00  INFO 65353 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T00:48:19.147+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T00:48:19.599+01:00  INFO 65353 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T00:48:19.824+01:00 DEBUG 65353 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T00:48:19.977+01:00  WARN 65353 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T00:48:19.997+01:00  WARN 65353 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c6ff46eb-65a9-4a44-8dc1-ab90481db6e4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T00:48:20.001+01:00  INFO 65353 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T00:48:20.294+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T00:48:20.638+01:00  INFO 65353 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T00:48:20.652+01:00  INFO 65353 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.831 seconds (process running for 4.14)
+2025-04-08T00:48:20.810+01:00  INFO 65353 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T00:48:20.811+01:00  INFO 65353 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T00:48:20.812+01:00  INFO 65353 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T00:48:28.066+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T00:48:28.066+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T00:48:28.105+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T00:48:28.253+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T00:48:28.254+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T00:48:28.372+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T00:48:28.441+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.SavingsService      : Flexible plan created: 11, deducted from account balance: 10000
+2025-04-08T00:48:28.656+01:00  INFO 65353 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T00:49:36.167+01:00  INFO 65353 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T00:49:36.179+01:00  INFO 65353 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T00:49:36.196+01:00  INFO 65353 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T00:49:36.201+01:00  INFO 65353 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T00:49:36.207+01:00  INFO 65353 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T00:49:39.128+01:00  INFO 65627 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 65627 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T00:49:39.129+01:00 DEBUG 65627 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T00:49:39.130+01:00  INFO 65627 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T00:49:39.669+01:00  INFO 65627 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T00:49:39.704+01:00  INFO 65627 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 6 JPA repository interfaces.
+2025-04-08T00:49:40.139+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T00:49:40.146+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T00:49:40.146+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T00:49:40.168+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T00:49:40.168+01:00  INFO 65627 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1013 ms
+2025-04-08T00:49:40.328+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T00:49:40.355+01:00  INFO 65627 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T00:49:40.374+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T00:49:40.518+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T00:49:40.533+01:00  INFO 65627 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T00:49:40.630+01:00  INFO 65627 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@511de4dd
+2025-04-08T00:49:40.631+01:00  INFO 65627 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T00:49:40.668+01:00  WARN 65627 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T00:49:40.677+01:00  INFO 65627 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T00:49:41.218+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T00:49:41.693+01:00  INFO 65627 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T00:49:41.923+01:00 DEBUG 65627 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T00:49:42.086+01:00  WARN 65627 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T00:49:42.108+01:00  WARN 65627 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 4395f881-e93e-499a-92da-ada32fc79503
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T00:49:42.114+01:00  INFO 65627 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T00:49:42.416+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T00:49:42.868+01:00  INFO 65627 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T00:49:42.883+01:00  INFO 65627 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 4.014 seconds (process running for 4.317)
+2025-04-08T00:49:43.394+01:00  INFO 65627 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T00:49:43.395+01:00  INFO 65627 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T00:49:43.396+01:00  INFO 65627 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T00:49:44.991+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T00:49:44.991+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T00:49:45.011+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T00:49:45.127+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T00:49:45.128+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T00:49:45.207+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T00:49:45.259+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.SavingsService      : Flexible plan created: 12, deducted from account balance: 10000
+2025-04-08T00:49:45.455+01:00  INFO 65627 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T01:00:00.108+01:00  INFO 65627 --- [SpacePay Savings App] [pool-2-thread-1] com.spazepay.service.SavingsService      : Running daily interest calculation...
+2025-04-08T01:03:21.031+01:00  INFO 65627 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T01:03:21.038+01:00  INFO 65627 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T01:03:21.054+01:00  INFO 65627 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:03:21.065+01:00  INFO 65627 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T01:03:21.068+01:00  INFO 65627 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T01:03:24.162+01:00  INFO 68264 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 68264 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T01:03:24.163+01:00 DEBUG 68264 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T01:03:24.164+01:00  INFO 68264 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T01:03:24.689+01:00  INFO 68264 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T01:03:24.726+01:00  INFO 68264 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 6 JPA repository interfaces.
+2025-04-08T01:03:25.163+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T01:03:25.171+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T01:03:25.171+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T01:03:25.194+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T01:03:25.194+01:00  INFO 68264 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1010 ms
+2025-04-08T01:03:25.355+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T01:03:25.386+01:00  INFO 68264 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T01:03:25.404+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T01:03:25.548+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T01:03:25.563+01:00  INFO 68264 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T01:03:25.640+01:00  INFO 68264 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@61bf405d
+2025-04-08T01:03:25.641+01:00  INFO 68264 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T01:03:25.679+01:00  WARN 68264 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T01:03:25.690+01:00  INFO 68264 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T01:03:26.235+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T01:03:26.690+01:00  INFO 68264 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:03:26.912+01:00 DEBUG 68264 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T01:03:27.062+01:00  WARN 68264 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T01:03:27.099+01:00  WARN 68264 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c3223ff5-3e5e-43ad-ae40-05be9ba3c6e4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T01:03:27.107+01:00  INFO 68264 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T01:03:27.436+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T01:03:27.823+01:00  INFO 68264 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T01:03:27.843+01:00  INFO 68264 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.924 seconds (process running for 4.256)
+2025-04-08T01:03:28.462+01:00  INFO 68264 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T01:03:28.462+01:00  INFO 68264 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T01:03:28.463+01:00  INFO 68264 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T01:03:34.395+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:03:34.395+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:03:34.415+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:03:34.542+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:03:34.543+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:03:46.343+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:03:46.344+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:03:46.346+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:03:46.352+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:03:46.352+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:04:03.057+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:04:03.058+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:04:03.062+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:04:03.099+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:04:03.099+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:04:03.188+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:04:03.232+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.SavingsService      : Flexible plan created: 13, deducted from account balance: 10000
+2025-04-08T01:04:03.408+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T01:04:14.940+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:04:14.942+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:04:14.943+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:04:14.946+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:04:14.946+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:04:14.948+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] c.spazepay.controller.AccountController  : Top-up account request for user: ndifreke.eduo@example.com, amount: 100000000
+2025-04-08T01:04:14.949+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:04:14.952+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.service.AccountService      : Account topped up for user ID: 2, new balance: 198838000.00
+2025-04-08T01:05:29.749+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:05:29.750+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:05:29.754+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:05:29.766+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:05:29.767+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:05:29.769+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-7] c.spazepay.controller.AccountController  : Balance request for user: ndifreke.eduo@example.com
+2025-04-08T01:05:29.769+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:11:29.932+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:11:29.933+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:11:29.937+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:11:29.960+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:11:29.960+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:11:29.979+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] c.spazepay.controller.SavingsController  : Withdraw request for plan: 8
+2025-04-08T01:11:30.003+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:11:30.016+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.SavingsService      : Withdrawal from plan: 8, count: 5
+2025-04-08T01:11:30.255+01:00  INFO 68264 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T01:21:09.423+01:00  INFO 68264 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T01:21:09.441+01:00  INFO 68264 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T01:21:09.456+01:00  INFO 68264 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:21:09.461+01:00  INFO 68264 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T01:21:09.463+01:00  INFO 68264 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T01:21:11.953+01:00  INFO 71664 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 71664 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T01:21:11.954+01:00 DEBUG 71664 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T01:21:11.954+01:00  INFO 71664 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T01:21:12.498+01:00  INFO 71664 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T01:21:12.537+01:00  INFO 71664 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 6 JPA repository interfaces.
+2025-04-08T01:21:12.992+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T01:21:12.999+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T01:21:12.999+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T01:21:13.021+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T01:21:13.021+01:00  INFO 71664 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1047 ms
+2025-04-08T01:21:13.177+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T01:21:13.204+01:00  INFO 71664 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T01:21:13.225+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T01:21:13.368+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T01:21:13.383+01:00  INFO 71664 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T01:21:13.459+01:00  INFO 71664 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@740ad32e
+2025-04-08T01:21:13.460+01:00  INFO 71664 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T01:21:13.502+01:00  WARN 71664 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T01:21:13.512+01:00  INFO 71664 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T01:21:14.062+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T01:21:14.525+01:00  INFO 71664 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:21:14.784+01:00 DEBUG 71664 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T01:21:14.950+01:00  WARN 71664 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T01:21:14.973+01:00  WARN 71664 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2ec4d56e-ebd6-4573-80ce-c2a36c772e8d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T01:21:14.978+01:00  INFO 71664 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T01:21:15.276+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T01:21:15.627+01:00  INFO 71664 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T01:21:15.641+01:00  INFO 71664 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.932 seconds (process running for 4.238)
+2025-04-08T01:21:16.246+01:00  INFO 71664 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T01:21:16.247+01:00  INFO 71664 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T01:21:16.248+01:00  INFO 71664 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T01:21:26.494+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:21:26.495+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:21:26.518+01:00  WARN 71664 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AuthService         : JWT token expired: JWT expired at 2025-04-08T00:15:22Z. Current time: 2025-04-08T00:21:26Z, a difference of 364517 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-04-08T01:21:26.518+01:00 ERROR 71664 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Failed to validate token: JWT token expired
+2025-04-08T01:21:31.571+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:21:31.571+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNjc3MjIsImV4cCI6MTc0NDA3MTMyMn0.gOsnwSPxBm7uctvpeND82abUPFK45JqX43PD6Xc7emb_TLcTYLLP_XoEIIbHepZE9e_MdE4Cv3nRNCNbLW6mnw
+2025-04-08T01:21:31.573+01:00  WARN 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : JWT token expired: JWT expired at 2025-04-08T00:15:22Z. Current time: 2025-04-08T00:21:31Z, a difference of 369573 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-04-08T01:21:31.573+01:00 ERROR 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Failed to validate token: JWT token expired
+2025-04-08T01:21:31.617+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.controller.AuthController   : Login request for email: ndifreke.eduo@example.com
+2025-04-08T01:21:31.618+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Login attempt for email: ndifreke.eduo@example.com
+2025-04-08T01:21:31.995+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.EmailService        : Login email sent to: ndifreke.eduo@example.com
+2025-04-08T01:21:31.995+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Email sent to: ndifreke.eduo@example.com
+2025-04-08T01:21:31.995+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Login successful for email: ndifreke.eduo@example.com
+2025-04-08T01:21:35.821+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:21:35.821+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:21:35.823+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:21:35.856+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:21:35.857+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:21:35.862+01:00 ERROR 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] c.s.exception.GlobalExceptionHandler     : Unexpected error: No static resource api/accounts/transactions/1.
+
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/accounts/transactions/1.
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:585) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.39.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.39.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:181) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at com.spazepay.config.JwtFilter.doFilterInternal(JwtFilter.java:67) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.4.jar:6.4.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.4.jar:6.4.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:114) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.5.jar:6.2.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.39.jar:10.1.39]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2025-04-08T01:21:55.431+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:21:55.432+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:21:55.438+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:21:55.562+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:21:55.565+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:21:55.634+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] c.spazepay.controller.AccountController  : Top-up account request for user: ndifreke.eduo@example.com, amount: 100000000
+2025-04-08T01:21:55.668+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:21:55.720+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.service.AccountService      : Account topped up for user ID: 2, new balance: 298840000.00
+2025-04-08T01:22:02.699+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:22:02.699+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:22:02.701+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:22:02.718+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:22:02.718+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-7] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:22:20.671+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:22:20.673+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:22:20.677+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:22:20.706+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:22:20.707+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:22:20.712+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-8] c.spazepay.controller.SavingsController  : Fetching transactions for plan: 8
+2025-04-08T01:22:46.869+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:22:46.870+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:22:46.874+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:22:46.905+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:22:46.905+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:22:46.966+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:22:46.992+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.service.SavingsService      : Flexible plan created: 14, deducted from account balance: 10000
+2025-04-08T01:22:47.171+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-9] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T01:23:15.556+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:23:15.557+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:23:15.561+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:23:15.593+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:23:15.593+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:23:15.609+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] c.spazepay.controller.SavingsController  : Withdraw request for plan: 8
+2025-04-08T01:23:15.625+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:23:15.636+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.SavingsService      : Withdrawal from plan: 8, count: 6
+2025-04-08T01:23:15.787+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T01:24:14.038+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:24:14.040+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:24:14.043+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:24:14.054+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:24:14.057+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:25:29.571+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:25:29.572+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:25:29.576+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:25:29.597+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:25:29.598+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:25:29.601+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] c.spazepay.controller.AccountController  : Top-up account request for user: ndifreke.eduo@example.com, amount: 1000000
+2025-04-08T01:25:29.602+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:25:29.607+01:00  INFO 71664 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AccountService      : Account topped up for user ID: 2, new balance: 299832000.00
+2025-04-08T01:29:09.747+01:00  INFO 71664 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T01:29:09.754+01:00  INFO 71664 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T01:29:09.763+01:00  INFO 71664 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:29:09.767+01:00  INFO 71664 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T01:29:09.770+01:00  INFO 71664 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T01:29:12.125+01:00  INFO 73159 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 73159 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T01:29:12.126+01:00 DEBUG 73159 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T01:29:12.127+01:00  INFO 73159 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T01:29:12.655+01:00  INFO 73159 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T01:29:12.689+01:00  INFO 73159 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 6 JPA repository interfaces.
+2025-04-08T01:29:13.127+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T01:29:13.134+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T01:29:13.134+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T01:29:13.156+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T01:29:13.157+01:00  INFO 73159 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1009 ms
+2025-04-08T01:29:13.320+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T01:29:13.349+01:00  INFO 73159 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T01:29:13.367+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T01:29:13.517+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T01:29:13.536+01:00  INFO 73159 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T01:29:13.613+01:00  INFO 73159 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@369fb99a
+2025-04-08T01:29:13.614+01:00  INFO 73159 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T01:29:13.651+01:00  WARN 73159 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T01:29:13.661+01:00  INFO 73159 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T01:29:14.196+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T01:29:14.684+01:00  INFO 73159 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:29:14.920+01:00 DEBUG 73159 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T01:29:15.070+01:00  WARN 73159 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T01:29:15.090+01:00  WARN 73159 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 68ed19d1-63e0-431d-ba76-8ced9acf0c16
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T01:29:15.095+01:00  INFO 73159 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T01:29:15.384+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T01:29:15.725+01:00  INFO 73159 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T01:29:15.740+01:00  INFO 73159 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.862 seconds (process running for 4.177)
+2025-04-08T01:29:15.977+01:00  INFO 73159 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T01:29:15.977+01:00  INFO 73159 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T01:29:15.979+01:00  INFO 73159 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T01:29:28.185+01:00  INFO 73159 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:29:28.186+01:00  INFO 73159 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:29:28.208+01:00  INFO 73159 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:29:28.333+01:00  INFO 73159 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:29:28.335+01:00  INFO 73159 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:40:02.191+01:00  INFO 73159 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T01:40:02.202+01:00  INFO 73159 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T01:40:02.212+01:00  INFO 73159 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:40:02.239+01:00  INFO 73159 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T01:40:02.246+01:00  INFO 73159 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T01:40:05.855+01:00  INFO 75364 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 75364 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T01:40:05.856+01:00 DEBUG 75364 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T01:40:05.857+01:00  INFO 75364 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T01:40:06.465+01:00  INFO 75364 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T01:40:06.508+01:00  INFO 75364 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 6 JPA repository interfaces.
+2025-04-08T01:40:06.979+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T01:40:06.987+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T01:40:06.987+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T01:40:07.013+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T01:40:07.013+01:00  INFO 75364 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1136 ms
+2025-04-08T01:40:07.360+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T01:40:07.393+01:00  INFO 75364 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T01:40:07.412+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T01:40:07.651+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T01:40:07.667+01:00  INFO 75364 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T01:40:07.760+01:00  INFO 75364 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@696298ea
+2025-04-08T01:40:07.761+01:00  INFO 75364 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T01:40:07.799+01:00  WARN 75364 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T01:40:07.810+01:00  INFO 75364 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T01:40:08.367+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T01:40:08.933+01:00  INFO 75364 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:40:09.164+01:00 DEBUG 75364 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T01:40:09.324+01:00  WARN 75364 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T01:40:09.344+01:00  WARN 75364 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5198560f-2552-4ba8-82f6-33606077f5d4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T01:40:09.349+01:00  INFO 75364 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T01:40:09.651+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T01:40:09.995+01:00  INFO 75364 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T01:40:10.012+01:00  INFO 75364 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 4.404 seconds (process running for 4.716)
+2025-04-08T01:40:10.129+01:00  INFO 75364 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T01:40:10.129+01:00  INFO 75364 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T01:40:10.130+01:00  INFO 75364 --- [SpacePay Savings App] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T01:40:16.438+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:40:16.439+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:40:16.461+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:40:16.603+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:40:16.604+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:40:39.674+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:40:39.675+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:40:39.679+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:40:39.714+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:40:39.715+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:40:39.718+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-3] c.spazepay.controller.SavingsController  : Fetching transactions for plan: 8
+2025-04-08T01:41:03.752+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:41:03.755+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:41:03.760+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:41:03.776+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:41:03.777+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:41:03.835+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] c.spazepay.controller.SavingsController  : Top-up request for plan: 8
+2025-04-08T01:41:03.844+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:41:03.906+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.SavingsService      : Top-up successful for plan: 8
+2025-04-08T01:41:04.091+01:00  INFO 75364 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T01:47:18.630+01:00  INFO 75364 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T01:47:18.641+01:00  INFO 75364 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T01:47:18.654+01:00  INFO 75364 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:47:18.662+01:00  INFO 75364 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T01:47:18.675+01:00  INFO 75364 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T01:47:21.636+01:00  INFO 76790 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 76790 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T01:47:21.638+01:00 DEBUG 76790 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T01:47:21.638+01:00  INFO 76790 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T01:47:22.165+01:00  INFO 76790 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T01:47:22.199+01:00  INFO 76790 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 6 JPA repository interfaces.
+2025-04-08T01:47:22.659+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T01:47:22.667+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T01:47:22.667+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T01:47:22.690+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T01:47:22.690+01:00  INFO 76790 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1030 ms
+2025-04-08T01:47:22.850+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T01:47:22.878+01:00  INFO 76790 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T01:47:22.896+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T01:47:23.045+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T01:47:23.062+01:00  INFO 76790 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T01:47:23.152+01:00  INFO 76790 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@740ad32e
+2025-04-08T01:47:23.153+01:00  INFO 76790 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T01:47:23.192+01:00  WARN 76790 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T01:47:23.202+01:00  INFO 76790 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T01:47:23.766+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T01:47:24.229+01:00  INFO 76790 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:47:24.465+01:00 DEBUG 76790 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T01:47:24.633+01:00  WARN 76790 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T01:47:24.654+01:00  WARN 76790 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ff76087f-8900-4c6d-92c3-edc6e048da76
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T01:47:24.659+01:00  INFO 76790 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T01:47:24.976+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T01:47:25.339+01:00  INFO 76790 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T01:47:25.352+01:00  INFO 76790 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.975 seconds (process running for 4.305)
+2025-04-08T01:47:25.917+01:00  INFO 76790 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T01:47:25.917+01:00  INFO 76790 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T01:47:25.919+01:00  INFO 76790 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T01:47:31.534+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:47:31.535+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:47:31.559+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:47:31.678+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:47:31.679+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:47:31.723+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] c.spazepay.controller.SavingsController  : Top-up request for plan: 8
+2025-04-08T01:47:31.758+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:47:31.809+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.SavingsService      : Top-up successful for plan: 8
+2025-04-08T01:47:31.983+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T01:48:18.525+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:48:18.526+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:48:18.530+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:48:18.559+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:48:18.560+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:48:18.563+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-3] c.spazepay.controller.AccountController  : Balance request for user: ndifreke.eduo@example.com
+2025-04-08T01:48:18.564+01:00  INFO 76790 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:49:20.913+01:00  INFO 76790 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T01:49:20.919+01:00  INFO 76790 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T01:49:20.933+01:00  INFO 76790 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:49:20.943+01:00  INFO 76790 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T01:49:20.946+01:00  INFO 76790 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T01:49:23.189+01:00  INFO 77197 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 77197 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T01:49:23.190+01:00 DEBUG 77197 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T01:49:23.190+01:00  INFO 77197 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T01:49:23.712+01:00  INFO 77197 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T01:49:23.750+01:00  INFO 77197 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 6 JPA repository interfaces.
+2025-04-08T01:49:24.186+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T01:49:24.194+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T01:49:24.194+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T01:49:24.218+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T01:49:24.218+01:00  INFO 77197 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1007 ms
+2025-04-08T01:49:24.379+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T01:49:24.408+01:00  INFO 77197 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T01:49:24.426+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T01:49:24.571+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T01:49:24.585+01:00  INFO 77197 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T01:49:24.664+01:00  INFO 77197 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5d6b5d3d
+2025-04-08T01:49:24.665+01:00  INFO 77197 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T01:49:24.702+01:00  WARN 77197 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T01:49:24.712+01:00  INFO 77197 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T01:49:25.278+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T01:49:25.723+01:00  INFO 77197 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:49:25.945+01:00 DEBUG 77197 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T01:49:26.099+01:00  WARN 77197 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T01:49:26.119+01:00  WARN 77197 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 88dd0634-8fae-4071-8ac9-2ad80a4ee9a8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T01:49:26.124+01:00  INFO 77197 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T01:49:26.414+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T01:49:26.757+01:00  INFO 77197 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T01:49:26.771+01:00  INFO 77197 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.826 seconds (process running for 4.13)
+2025-04-08T01:49:26.969+01:00  INFO 77197 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T01:49:26.969+01:00  INFO 77197 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T01:49:26.971+01:00  INFO 77197 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-04-08T01:49:35.201+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:49:35.202+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:49:35.222+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:49:35.345+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:49:35.346+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:49:35.394+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.controller.AccountController  : Top-up account request for user: ndifreke.eduo@example.com, amount: 1000000
+2025-04-08T01:49:35.405+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:49:35.478+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AccountService      : Account topped up for user ID: 2, new balance: 300812000.00
+2025-04-08T01:49:52.076+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:49:52.077+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:49:52.079+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:49:52.084+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:49:52.084+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:49:52.087+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-3] c.spazepay.controller.AccountController  : Balance request for user: ndifreke.eduo@example.com
+2025-04-08T01:49:52.087+01:00  INFO 77197 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T01:52:40.329+01:00  INFO 77197 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T01:52:40.342+01:00  INFO 77197 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T01:52:40.357+01:00  INFO 77197 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:52:40.361+01:00  INFO 77197 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T01:52:40.363+01:00  INFO 77197 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T01:52:42.590+01:00  INFO 77823 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 77823 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T01:52:42.591+01:00 DEBUG 77823 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T01:52:42.592+01:00  INFO 77823 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T01:52:43.122+01:00  INFO 77823 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T01:52:43.157+01:00  INFO 77823 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 6 JPA repository interfaces.
+2025-04-08T01:52:43.600+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T01:52:43.610+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T01:52:43.610+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T01:52:43.638+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T01:52:43.638+01:00  INFO 77823 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1026 ms
+2025-04-08T01:52:43.807+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T01:52:43.843+01:00  INFO 77823 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T01:52:43.861+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T01:52:44.000+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T01:52:44.015+01:00  INFO 77823 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T01:52:44.105+01:00  INFO 77823 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3eadad14
+2025-04-08T01:52:44.109+01:00  INFO 77823 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T01:52:44.146+01:00  WARN 77823 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T01:52:44.155+01:00  INFO 77823 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T01:52:44.698+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T01:52:45.203+01:00  INFO 77823 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T01:52:45.420+01:00 DEBUG 77823 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T01:52:45.575+01:00  WARN 77823 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T01:52:45.598+01:00  WARN 77823 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6dec27f0-dd1d-4f20-b10e-805499c1e7f9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T01:52:45.603+01:00  INFO 77823 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T01:52:45.927+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T01:52:46.281+01:00  INFO 77823 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T01:52:46.296+01:00  INFO 77823 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.951 seconds (process running for 4.26)
+2025-04-08T01:52:46.946+01:00  INFO 77823 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T01:52:46.946+01:00  INFO 77823 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T01:52:46.947+01:00  INFO 77823 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T01:52:52.039+01:00  INFO 77823 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:52:52.039+01:00  INFO 77823 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T01:52:52.061+01:00  INFO 77823 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T01:52:52.181+01:00  INFO 77823 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T01:52:52.182+01:00  INFO 77823 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T01:52:52.201+01:00  INFO 77823 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.controller.AccountController  : Balance request for user: ndifreke.eduo@example.com
+2025-04-08T01:52:52.201+01:00  INFO 77823 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:06:11.662+01:00  INFO 77823 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T02:06:11.670+01:00  INFO 77823 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T02:06:11.677+01:00  INFO 77823 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T02:06:11.681+01:00  INFO 77823 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T02:06:11.685+01:00  INFO 77823 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T02:06:14.363+01:00  INFO 80588 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 80588 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T02:06:14.364+01:00 DEBUG 80588 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T02:06:14.364+01:00  INFO 80588 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T02:06:14.888+01:00  INFO 80588 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T02:06:14.918+01:00  INFO 80588 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 7 JPA repository interfaces.
+2025-04-08T02:06:15.310+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T02:06:15.319+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T02:06:15.319+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T02:06:15.341+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T02:06:15.341+01:00  INFO 80588 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 953 ms
+2025-04-08T02:06:15.517+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T02:06:15.549+01:00  INFO 80588 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T02:06:15.569+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T02:06:15.695+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T02:06:15.710+01:00  INFO 80588 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T02:06:15.804+01:00  INFO 80588 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@464d5365
+2025-04-08T02:06:15.804+01:00  INFO 80588 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T02:06:15.846+01:00  WARN 80588 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T02:06:15.857+01:00  INFO 80588 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T02:06:16.324+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T02:06:16.769+01:00  INFO 80588 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T02:06:16.958+01:00 DEBUG 80588 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T02:06:17.132+01:00  WARN 80588 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T02:06:17.149+01:00  WARN 80588 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5749735e-e576-4c97-9a89-dfcf5ba0b030
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T02:06:17.154+01:00  INFO 80588 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T02:06:17.402+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T02:06:17.706+01:00  INFO 80588 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T02:06:17.717+01:00  INFO 80588 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.587 seconds (process running for 3.88)
+2025-04-08T02:06:18.275+01:00  INFO 80588 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T02:06:18.276+01:00  INFO 80588 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T02:06:18.277+01:00  INFO 80588 --- [SpacePay Savings App] [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T02:06:50.297+01:00  INFO 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:06:50.297+01:00  INFO 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:06:50.318+01:00  INFO 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:06:50.446+01:00  INFO 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:06:50.447+01:00  INFO 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:06:50.468+01:00  INFO 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.controller.AccountController  : View transactions request for account ID: 1 and user: ndifreke.eduo@example.com
+2025-04-08T02:06:50.468+01:00  INFO 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:06:50.480+01:00  WARN 80588 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.controller.AccountController  : User ndifreke.eduo@example.com attempted to access transactions for account ID 1 which does not belong to them.
+2025-04-08T02:09:01.187+01:00  INFO 80588 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T02:09:01.206+01:00  INFO 80588 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T02:09:01.232+01:00  INFO 80588 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T02:09:01.243+01:00  INFO 80588 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T02:09:01.245+01:00  INFO 80588 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-08T02:14:34.474+01:00  INFO 82142 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Starting SpazePaySavingsAppApplication using Java 21 with PID 82142 (/Users/ndifrekealexander/development/spazepay/target/classes started by ndifrekealexander in /Users/ndifrekealexander/development/spazepay)
+2025-04-08T02:14:34.475+01:00 DEBUG 82142 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-08T02:14:34.475+01:00  INFO 82142 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T02:14:35.014+01:00  INFO 82142 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T02:14:35.052+01:00  INFO 82142 --- [SpacePay Savings App] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 7 JPA repository interfaces.
+2025-04-08T02:14:35.432+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-08T02:14:35.439+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T02:14:35.439+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-08T02:14:35.456+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T02:14:35.456+01:00  INFO 82142 --- [SpacePay Savings App] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 965 ms
+2025-04-08T02:14:35.593+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T02:14:35.625+01:00  INFO 82142 --- [SpacePay Savings App] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-08T02:14:35.646+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-08T02:14:35.816+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T02:14:35.832+01:00  INFO 82142 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T02:14:35.910+01:00  INFO 82142 --- [SpacePay Savings App] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@31204303
+2025-04-08T02:14:35.911+01:00  INFO 82142 --- [SpacePay Savings App] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T02:14:35.958+01:00  WARN 82142 --- [SpacePay Savings App] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-08T02:14:35.968+01:00  INFO 82142 --- [SpacePay Savings App] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.17
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08T02:14:36.466+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08T02:14:36.891+01:00  INFO 82142 --- [SpacePay Savings App] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T02:14:37.105+01:00 DEBUG 82142 --- [SpacePay Savings App] [main] com.spazepay.config.JwtFilter            : Filter 'jwtFilter' configured for use
+2025-04-08T02:14:37.260+01:00  WARN 82142 --- [SpacePay Savings App] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T02:14:37.278+01:00  WARN 82142 --- [SpacePay Savings App] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2dc0269d-7f03-4867-ac29-a28bce11402a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-04-08T02:14:37.283+01:00  INFO 82142 --- [SpacePay Savings App] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-04-08T02:14:37.532+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08T02:14:37.809+01:00  INFO 82142 --- [SpacePay Savings App] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-08T02:14:37.820+01:00  INFO 82142 --- [SpacePay Savings App] [main] c.s.SpazePaySavingsAppApplication        : Started SpazePaySavingsAppApplication in 3.552 seconds (process running for 3.845)
+2025-04-08T02:14:38.201+01:00  INFO 82142 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08T02:14:38.201+01:00  INFO 82142 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-08T02:14:38.202+01:00  INFO 82142 --- [SpacePay Savings App] [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-04-08T02:15:01.043+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:01.044+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:01.063+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:15:01.183+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:15:01.184+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:15:01.203+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.controller.AccountController  : View transactions request for account ID: 1 and user: ndifreke.eduo@example.com
+2025-04-08T02:15:01.204+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:15:01.214+01:00  WARN 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.controller.AccountController  : User ndifreke.eduo@example.com attempted to access transactions for account ID 1 which does not belong to them.
+2025-04-08T02:15:11.302+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:11.302+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:11.304+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:15:11.307+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:15:11.307+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:15:11.308+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] c.spazepay.controller.AccountController  : View transactions request for account ID: 2 and user: ndifreke.eduo@example.com
+2025-04-08T02:15:11.308+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:15:11.310+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AccountService      : Fetching transactions for account ID: 2
+2025-04-08T02:15:38.436+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:38.437+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:38.441+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:15:38.452+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:15:38.452+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:15:38.556+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:15:38.593+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.SavingsService      : Flexible plan created: 15, deducted from account balance: 10000
+2025-04-08T02:15:38.764+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-4] com.spazepay.service.EmailService        : HTML email sent to: ndifreke.eduo@example.com
+2025-04-08T02:15:48.291+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:48.291+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:48.294+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:15:48.296+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:15:48.297+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:15:48.298+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-5] c.spazepay.controller.AccountController  : Balance request for user: ndifreke.eduo@example.com
+2025-04-08T02:15:48.298+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-5] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:15:54.221+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:54.222+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:15:54.224+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:15:54.252+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:15:54.253+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:15:54.255+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] c.spazepay.controller.AccountController  : View transactions request for account ID: 2 and user: ndifreke.eduo@example.com
+2025-04-08T02:15:54.256+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:15:54.260+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-6] com.spazepay.service.AccountService      : Fetching transactions for account ID: 2
+2025-04-08T02:22:06.087+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:22:06.089+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:22:06.097+01:00  WARN 82142 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.service.AuthService         : JWT token expired: JWT expired at 2025-04-08T01:21:31Z. Current time: 2025-04-08T01:22:06Z, a difference of 35093 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-04-08T02:22:06.097+01:00 ERROR 82142 --- [SpacePay Savings App] [http-nio-8080-exec-8] com.spazepay.config.JwtFilter            : Failed to validate token: JWT token expired
+2025-04-08T02:22:10.969+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:22:10.970+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzE2OTEsImV4cCI6MTc0NDA3NTI5MX0.yVqgij1OeidUWODWiM_hsMPbu5dYn9X9WZVRCsDbXF-HQ9DWuq3QUWV1wOW9jkpB2Cyi04FmowLtdZb5kzemdA
+2025-04-08T02:22:10.972+01:00  WARN 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.AuthService         : JWT token expired: JWT expired at 2025-04-08T01:21:31Z. Current time: 2025-04-08T01:22:10Z, a difference of 39971 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-04-08T02:22:10.972+01:00 ERROR 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.config.JwtFilter            : Failed to validate token: JWT token expired
+2025-04-08T02:22:10.982+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.controller.AuthController   : Login request for email: ndifreke.eduo@example.com
+2025-04-08T02:22:10.983+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.AuthService         : Login attempt for email: ndifreke.eduo@example.com
+2025-04-08T02:22:11.265+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.EmailService        : Login email sent to: ndifreke.eduo@example.com
+2025-04-08T02:22:11.266+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.AuthService         : Email sent to: ndifreke.eduo@example.com
+2025-04-08T02:22:11.266+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-10] com.spazepay.service.AuthService         : Login successful for email: ndifreke.eduo@example.com
+2025-04-08T02:22:15.236+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzUzMzEsImV4cCI6MTc0NDA3ODkzMX0.wtZHuMCrqqn714C2IY1ndDUT31OfX6qU6IH89PwCyECiWassYDcZs-bwdzMtskPvpKsNsUk7qhuHfX1CPAxTZA
+2025-04-08T02:22:15.237+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzUzMzEsImV4cCI6MTc0NDA3ODkzMX0.wtZHuMCrqqn714C2IY1ndDUT31OfX6qU6IH89PwCyECiWassYDcZs-bwdzMtskPvpKsNsUk7qhuHfX1CPAxTZA
+2025-04-08T02:22:15.241+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:22:15.244+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:22:15.246+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:22:15.249+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] c.spazepay.controller.AccountController  : Top-up account request for user: ndifreke.eduo@example.com, amount: 1000000
+2025-04-08T02:22:15.249+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:22:15.260+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-1] com.spazepay.service.AccountService      : Account topped up for user ID: 2, new balance: 301802000.00
+2025-04-08T02:22:24.480+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzUzMzEsImV4cCI6MTc0NDA3ODkzMX0.wtZHuMCrqqn714C2IY1ndDUT31OfX6qU6IH89PwCyECiWassYDcZs-bwdzMtskPvpKsNsUk7qhuHfX1CPAxTZA
+2025-04-08T02:22:24.480+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzUzMzEsImV4cCI6MTc0NDA3ODkzMX0.wtZHuMCrqqn714C2IY1ndDUT31OfX6qU6IH89PwCyECiWassYDcZs-bwdzMtskPvpKsNsUk7qhuHfX1CPAxTZA
+2025-04-08T02:22:24.483+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:22:24.487+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:22:24.487+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:22:24.488+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] c.spazepay.controller.AccountController  : Balance request for user: ndifreke.eduo@example.com
+2025-04-08T02:22:24.489+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-2] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:22:28.236+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Received Authorization header: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzUzMzEsImV4cCI6MTc0NDA3ODkzMX0.wtZHuMCrqqn714C2IY1ndDUT31OfX6qU6IH89PwCyECiWassYDcZs-bwdzMtskPvpKsNsUk7qhuHfX1CPAxTZA
+2025-04-08T02:22:28.237+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Extracted JWT token: eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVVNFUiIsInN1YiI6Im5kaWZyZWtlLmVkdW9AZXhhbXBsZS5jb20iLCJpYXQiOjE3NDQwNzUzMzEsImV4cCI6MTc0NDA3ODkzMX0.wtZHuMCrqqn714C2IY1ndDUT31OfX6qU6IH89PwCyECiWassYDcZs-bwdzMtskPvpKsNsUk7qhuHfX1CPAxTZA
+2025-04-08T02:22:28.238+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AuthService         : Token parsed, email: ndifreke.eduo@example.com
+2025-04-08T02:22:28.243+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : User extracted from token: ndifreke.eduo@example.com
+2025-04-08T02:22:28.243+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.config.JwtFilter            : Authentication set for user: ndifreke.eduo@example.com
+2025-04-08T02:22:28.244+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] c.spazepay.controller.AccountController  : View transactions request for account ID: 2 and user: ndifreke.eduo@example.com
+2025-04-08T02:22:28.244+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AccountService      : Fetching account for user ID: 2
+2025-04-08T02:22:28.247+01:00  INFO 82142 --- [SpacePay Savings App] [http-nio-8080-exec-3] com.spazepay.service.AccountService      : Fetching transactions for account ID: 2
+2025-04-08T02:29:47.798+01:00  INFO 82142 --- [SpacePay Savings App] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T02:29:47.806+01:00  INFO 82142 --- [SpacePay Savings App] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T02:29:47.818+01:00  INFO 82142 --- [SpacePay Savings App] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T02:29:47.826+01:00  INFO 82142 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-08T02:29:47.843+01:00  INFO 82142 --- [SpacePay Savings App] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

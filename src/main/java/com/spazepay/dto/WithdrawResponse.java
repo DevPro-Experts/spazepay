@@ -1,5 +1,6 @@
 package com.spazepay.dto;
 
+import com.spazepay.util.CurrencyFormatter;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -12,6 +13,10 @@ public class WithdrawResponse {
     private int withdrawalCount;
     private boolean interestForfeited;
     private String message;
+
+    public String getFormattedNewBalance() {
+        return CurrencyFormatter.formatCurrency(newBalance);
+    }
 
     public WithdrawResponse(BigDecimal newBalance, int withdrawalCount, boolean interestForfeited, String message) {
         this.newBalance = newBalance;

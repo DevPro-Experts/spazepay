@@ -8,6 +8,7 @@ import com.spazepay.model.enums.TransactionType;
 import com.spazepay.repository.MonthlyActivityRepository;
 import com.spazepay.repository.SavingsPlanRepository;
 import com.spazepay.repository.SavingsTransactionRepository;
+import com.spazepay.util.CurrencyFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,25 +73,30 @@ public class InterestEngine {
                 plan.setPrincipalBalance(plan.getPrincipalBalance().add(netInterest));
                 planRepository.save(plan);
 
+                String formattedInterest = CurrencyFormatter.formatCurrency(netInterest);
+                String formattedBalance = CurrencyFormatter.formatCurrency(plan.getPrincipalBalance());
+
                 emailService.sendHtmlEmail(
                         plan.getUser().getEmail(),
                         "Monthly Interest Accrued",
                         "<html><body>" +
                                 "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
-                                "<p>Interest of " + netInterest + " has been compounded to your savings plan '" + plan.getName() + "'.</p>" +
-                                "<p>Current Balance: " + plan.getPrincipalBalance() + "</p>" +
+                                "<p>Interest of " + formattedInterest + " has been compounded to your savings plan '" + plan.getName() + "'.</p>" +
+                                "<p>Current Balance: " + formattedBalance + "</p>" +
                                 "<p>Thank you.</p>" +
                                 "</body></html>"
                 );
             } else {
                 // Transfer netInterest to main account (simplified)
                 logger.info("Interest withdrawn to main account for plan: {}", plan.getId());
+                String formattedInterest = CurrencyFormatter.formatCurrency(netInterest);
+
                 emailService.sendHtmlEmail(
                         plan.getUser().getEmail(),
                         "Monthly Interest Paid Out",
                         "<html><body>" +
                                 "<p>Dear " + plan.getUser().getFullName() + ",</p>" +
-                                "<p>Interest of " + netInterest + " has been paid out to your main account from savings plan '" + plan.getName() + "'.</p>" +
+                                "<p>Interest of " + formattedInterest + " has been paid out to your main account from savings plan '" + plan.getName() + "'.</p>" +
                                 "<p>Thank you.</p>" +
                                 "</body></html>"
                 );
