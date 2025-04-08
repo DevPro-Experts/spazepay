@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - develop
+      - fixed-pipeline-errors
   pull_request:
     branches:
       - main
       - develop
+      - fixed-pipeline-errors
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -23,7 +25,7 @@ jobs:
         image: postgres:14
         env:
           POSTGRES_USER: ndifrekealexander
-          POSTGRES_PASSWORD: testpass123  # Use a valid password
+          POSTGRES_PASSWORD: testpass123
           POSTGRES_DB: test_spaze_pay_savings_db
         ports:
           - 5432:5432
@@ -65,7 +67,7 @@ jobs:
             datasource:
               url: jdbc:postgresql://localhost:5432/test_spaze_pay_savings_db
               username: ndifrekealexander
-              password: testpass123  # Match the service password
+              password: testpass123
               driver-class-name: org.postgresql.Driver
             jpa:
               hibernate:
@@ -73,13 +75,18 @@ jobs:
               show-sql: true
             profiles:
               active: test
+          logging:
+            level:
+              org.springframework: DEBUG
+              org.hibernate: DEBUG
+              com.zaxxer.hikari: DEBUG  # Debug datasource connection
           EOF
 
       - name: Wait for PostgreSQL
         run: |
           echo "Waiting for PostgreSQL to be ready..."
           for i in {1..30}; do
-            if pg_isready -h localhost -p 5432 -U ndifrekealexander -d test_spaze_pay_savings_db; then
+            if pg_isready -h localhost -p 5432 -U ndifrekealexander -d test_spaze_pay_savings_db -q; then
               echo "PostgreSQL is ready!"
               break
             fi
@@ -95,4 +102,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: target/surefire-reports/
+          path: |
+            target/surefire-reports/
+            target/*.dump*
+            target/*.dumpstream
