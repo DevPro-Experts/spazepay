@@ -1,15 +1,29 @@
 spring:
   application:
     name: SpacePay Savings App
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spaze_pay_savings_db
+    username: ndifrekealexander
+    password: ""
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
-    show-sql: true
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    driver-class-name: org.postgresql.Driver
+  mail:
+    host: localhost
+    port: 1025
+    username: ""
+    password: ""
+    sender: info@spazepay.com
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: false
+          auth: false
 
 logging:
   level:
