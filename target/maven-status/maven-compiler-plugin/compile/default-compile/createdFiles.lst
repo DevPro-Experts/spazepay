@@ -40,6 +40,7 @@ com/spazepay/dto/savings/LiquidateRequest.class
 com/spazepay/repository/MonthlyActivityRepository.class
 com/spazepay/config/SecurityConfig.class
 com/spazepay/dto/savings/RolloverRequest.class
+com/spazepay/controller/InterestController.class
 com/spazepay/model/MonthlyActivity.class
 com/spazepay/model/DailyBalance.class
 com/spazepay/exception/InvalidJwtTokenException.class
