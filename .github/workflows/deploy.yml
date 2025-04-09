@@ -33,7 +33,7 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Run tests
-        run: mvn test
+        run: mvn test -Dspring.profiles.active=test
 
       - name: Lint code
         run: mvn checkstyle:check

@@ -7,6 +7,7 @@
 /Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/config/SecurityConfig.java
 /Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/controller/AccountController.java
 /Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/controller/AuthController.java
+/Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/controller/InterestController.java
 /Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/controller/RegistrationController.java
 /Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/controller/SavingsController.java
 /Users/ndifrekealexander/development/spazepay/src/main/java/com/spazepay/dto/LoginRequest.java
