@@ -8,8 +8,6 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
-  profiles:
-    active: test
 app:
   default:
     currency: NGN

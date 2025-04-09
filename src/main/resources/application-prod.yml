@@ -1,15 +1,27 @@
 spring:
-  application:
-    name: SpacePay Savings App
+  datasource:
+    url: jdbc:postgresql://spaze-pay-savings-db.cuzi4kaqijcy.us-east-1.rds.amazonaws.com:5432/spaze_pay_savings_db
+    username: spazepayadmin
+    password: SecureProdPass123!
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
-    show-sql: true
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    driver-class-name: org.postgresql.Driver
+  mail:
+    host: email-smtp.us-east-1.amazonaws.com
+    port: 587
+    username: AKIA57GKFUL3Y4BJH5D6
+    password: BL0ZLxoLlFuDdwPfIfW+YCvNE88AdWw6NtslL8pBwhhZ
+    sender: spazepay@gmail.com
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
 
 logging:
   level:

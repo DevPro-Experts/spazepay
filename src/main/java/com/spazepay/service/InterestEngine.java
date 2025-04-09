@@ -82,9 +82,9 @@ public class InterestEngine {
                 continue;
             }
 
-            // Find the confirmed net inflow for the interestApplicableDate
-            DailyBalance dailyBalance = dailyBalanceRepository.findByPlanIdAndDate(plan.getId(), interestApplicableDate)
-                    .orElse(null);
+            // Fetch all daily balances and pick the first (or handle duplicates)
+            List<DailyBalance> dailyBalances = dailyBalanceRepository.findByPlanIdAndDate(plan.getId(), interestApplicableDate);
+            DailyBalance dailyBalance = dailyBalances.isEmpty() ? null : dailyBalances.get(0);
 
             if (dailyBalance != null && dailyBalance.getNetBalance().compareTo(BigDecimal.ZERO) > 0) {
                 BigDecimal principalForInterest = dailyBalance.getNetBalance();
@@ -92,6 +92,10 @@ public class InterestEngine {
                 BigDecimal grossInterest = principalForInterest.multiply(dailyInterestRate).setScale(2, BigDecimal.ROUND_HALF_EVEN);
                 BigDecimal tax = grossInterest.multiply(TAX_RATE).setScale(2, BigDecimal.ROUND_HALF_EVEN);
                 BigDecimal netInterest = grossInterest.subtract(tax).setScale(2, BigDecimal.ROUND_HALF_EVEN);
+
+                // Update accrued_interest (initialize if null)
+                BigDecimal currentAccruedInterest = plan.getAccruedInterest() != null ? plan.getAccruedInterest() : BigDecimal.ZERO;
+                plan.setAccruedInterest(currentAccruedInterest.add(grossInterest));
 
                 // Compound the net interest into the principal balance
                 plan.setPrincipalBalance(plan.getPrincipalBalance().add(netInterest));
