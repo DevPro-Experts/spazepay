@@ -53,7 +53,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 }
             } catch (InvalidJwtTokenException e) {
                 logger.error("Failed to validate token: {}", e.getMessage());
-                if (!requestURI.equals("/api/auth/login") && !requestURI.equals("/api/auth/register")) {
+                if (!requestURI.equals("/api/auth/login") && !requestURI.equals("/api/auth/register") && !requestURI.equals("/api/interest/calculate-daily")) {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     response.setContentType("application/json");
                     response.getWriter().write("{\"error\": \"JWT Expired\"}");
