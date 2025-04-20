@@ -1,5 +1,6 @@
 package com.spazepay.model;
 
+import com.spazepay.model.enums.SavingsType;
 import com.spazepay.model.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,9 +16,12 @@ public class SavingsTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "plan_id", nullable = false)
-    private SavingsPlan plan;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "plan_type", nullable = false)
+    private SavingsType planType;
+
+    @Column(name = "plan_id", nullable = false)
+    private Long planId;
 
     @Enumerated(EnumType.STRING)
     private TransactionType type;

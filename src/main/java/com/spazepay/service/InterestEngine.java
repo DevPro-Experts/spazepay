@@ -1,12 +1,13 @@
 package com.spazepay.service;
 
 import com.spazepay.model.*;
+import com.spazepay.model.savings.FlexiblePlan;
 import com.spazepay.model.enums.PlanStatus;
 import com.spazepay.model.enums.SavingsType;
 import com.spazepay.model.enums.TransactionType;
 import com.spazepay.repository.DailyBalanceRepository;
+import com.spazepay.repository.FlexiblePlanRepository;
 import com.spazepay.repository.MonthlyActivityRepository;
-import com.spazepay.repository.SavingsPlanRepository;
 import com.spazepay.repository.SavingsTransactionRepository;
 import com.spazepay.util.CurrencyFormatter;
 import org.slf4j.Logger;
@@ -25,12 +26,12 @@ import java.util.List;
 public class InterestEngine {
 
     private static final Logger logger = LoggerFactory.getLogger(InterestEngine.class);
-    private static final BigDecimal ANNUAL_INTEREST_RATE = new BigDecimal("0.05"); // 5% annual
-    private static final BigDecimal TAX_RATE = new BigDecimal("0.10"); // 10% tax
+    private static final BigDecimal ANNUAL_INTEREST_RATE = new BigDecimal("0.05");
+    private static final BigDecimal TAX_RATE = new BigDecimal("0.10");
     private static final int DAYS_IN_YEAR = 365;
 
     @Autowired
-    private SavingsPlanRepository planRepository;
+    private FlexiblePlanRepository planRepository;
 
     @Autowired
     private SavingsTransactionRepository transactionRepository;
@@ -46,7 +47,7 @@ public class InterestEngine {
 
     @Autowired
     public InterestEngine(
-            SavingsPlanRepository planRepository,
+            FlexiblePlanRepository planRepository,
             DailyBalanceRepository dailyBalanceRepository,
             SavingsTransactionRepository transactionRepository,
             MonthlyActivityRepository monthlyActivityRepository,
@@ -66,24 +67,20 @@ public class InterestEngine {
     @Transactional
     public void applyDailyInterest() {
         LocalDate today = LocalDate.now();
-        LocalDate interestApplicableDate = today.minusDays(2); // Interest applies to net inflow 2 days ago
+        LocalDate interestApplicableDate = today.minusDays(2);
         String currentMonth = YearMonth.now().toString();
 
-        List<SavingsPlan> activePlans = planRepository.findByStatus(PlanStatus.ACTIVE);
+        List<FlexiblePlan> activePlans = planRepository.findByStatus(PlanStatus.ACTIVE);
 
-        for (SavingsPlan plan : activePlans) {
-            if (plan.getType() != SavingsType.FLEXIBLE) continue;
-
-            // Check forfeiture status for the current month
-            MonthlyActivity activity = monthlyActivityRepository.findByPlanIdAndMonth(plan.getId(), currentMonth)
+        for (FlexiblePlan plan : activePlans) {
+            MonthlyActivity activity = monthlyActivityRepository.findByPlanIdAndPlanTypeAndMonth(plan.getId(), SavingsType.FLEXIBLE, currentMonth)
                     .orElse(new MonthlyActivity());
             if (activity.isInterestForfeited()) {
                 logger.info("Daily interest forfeited for plan: {} due to monthly activity", plan.getId());
                 continue;
             }
 
-            // Fetch all daily balances and pick the first (or handle duplicates)
-            List<DailyBalance> dailyBalances = dailyBalanceRepository.findByPlanIdAndDate(plan.getId(), interestApplicableDate);
+            List<DailyBalance> dailyBalances = dailyBalanceRepository.findByPlanIdAndPlanTypeAndDate(plan.getId(), SavingsType.FLEXIBLE, interestApplicableDate);
             DailyBalance dailyBalance = dailyBalances.isEmpty() ? null : dailyBalances.get(0);
 
             if (dailyBalance != null && dailyBalance.getNetBalance().compareTo(BigDecimal.ZERO) > 0) {
@@ -93,17 +90,14 @@ public class InterestEngine {
                 BigDecimal tax = grossInterest.multiply(TAX_RATE).setScale(2, BigDecimal.ROUND_HALF_EVEN);
                 BigDecimal netInterest = grossInterest.subtract(tax).setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
-                // Update accrued_interest (initialize if null)
                 BigDecimal currentAccruedInterest = plan.getAccruedInterest() != null ? plan.getAccruedInterest() : BigDecimal.ZERO;
                 plan.setAccruedInterest(currentAccruedInterest.add(grossInterest));
-
-                // Compound the net interest into the principal balance
                 plan.setPrincipalBalance(plan.getPrincipalBalance().add(netInterest));
                 planRepository.save(plan);
 
-                // Record the interest transaction
                 SavingsTransaction tx = new SavingsTransaction();
-                tx.setPlan(plan);
+                tx.setPlanId(plan.getId());
+                tx.setPlanType(SavingsType.FLEXIBLE);
                 tx.setType(TransactionType.INTEREST);
                 tx.setAmount(grossInterest);
                 tx.setSource("system");
@@ -132,18 +126,18 @@ public class InterestEngine {
         }
     }
 
-    @Scheduled(cron = "0 0 0 1 * *", zone = "Africa/Lagos") // Runs monthly on the 1st at midnight
+    @Scheduled(cron = "0 0 0 1 * *", zone = "Africa/Lagos")
     @Transactional
     public void sendMonthlyInterestSummary() {
-        String previousMonth = YearMonth.now().minusMonths(1).toString();
-        List<SavingsPlan> activePlans = planRepository.findByStatus(PlanStatus.ACTIVE);
+        String previousMonthStr = YearMonth.now().minusMonths(1).toString(); // e.g., "2025-04"
+        YearMonth yearMonth = YearMonth.parse(previousMonthStr);
+        int month = yearMonth.getMonthValue();
+        int year = yearMonth.getYear();
+        List<FlexiblePlan> activePlans = planRepository.findByStatus(PlanStatus.ACTIVE);
 
-        for (SavingsPlan plan : activePlans) {
-            if (plan.getType() != SavingsType.FLEXIBLE) continue;
-
-            // Calculate total accrued interest for the previous month
+        for (FlexiblePlan plan : activePlans) {
             List<SavingsTransaction> interestTransactions = transactionRepository
-                    .findByPlanAndTypeAndMonth(plan, TransactionType.INTEREST, previousMonth);
+                    .findByPlanIdAndPlanTypeAndTypeAndMonth(plan.getId(), SavingsType.FLEXIBLE, TransactionType.INTEREST, month, year);
             BigDecimal totalNetInterest = interestTransactions.stream()
                     .map(SavingsTransaction::getNetAmount)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -170,7 +164,8 @@ public class InterestEngine {
         }
     }
 
-    @Scheduled(cron = "0 0 0 1 * ?", zone = "Africa/Lagos") // Reset counters monthly
+    @Scheduled(cron = "0 0 0 1 * ?", zone = "Africa/Lagos")
+    @Transactional
     public void resetMonthlyCounters() {
         String currentMonth = YearMonth.now().toString();
         List<MonthlyActivity> activities = monthlyActivityRepository.findAll();

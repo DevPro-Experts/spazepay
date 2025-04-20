@@ -1,5 +1,11 @@
 package com.spazepay.model.enums;
 
 public enum PlanStatus {
-    ACTIVE, CLOSED
+    ACTIVE,
+    CLOSED,
+    PENDING,
+    MATURED,
+    LIQUIDATED,
+    COMPLETED,
+    OPEN
 }

@@ -15,12 +15,4 @@ public class SavingsTransactionResponse {
     private String source;
     private String netAmount;
     private Instant timestamp;
-//
-//    public String getFormattedAmount() {
-//        return CurrencyFormatter.formatCurrency(amount);
-//    }
-//
-//    public String getFormattedNetAmount() {
-//        return CurrencyFormatter.formatCurrency(netAmount);
-//    }
 }

@@ -1,5 +1,6 @@
 package com.spazepay.model;
 
+import com.spazepay.model.enums.SavingsType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,14 +16,18 @@ public class MonthlyActivity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "plan_id", nullable = false)
-    private SavingsPlan plan;
+    @Column(name = "plan_id", nullable = false)
+    private Long planId;
 
-    private String month; // e.g., "2025-04"
+    @Column(name = "plan_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private SavingsType planType;
 
+    private String month;
+
+    @Column(name = "withdrawal_count")
     private int withdrawalCount;
 
+    @Column(name = "interest_forfeited")
     private boolean interestForfeited;
-
 }

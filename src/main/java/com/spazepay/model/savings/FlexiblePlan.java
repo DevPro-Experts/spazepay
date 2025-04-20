@@ -1,8 +1,8 @@
-package com.spazepay.model;
+package com.spazepay.model.savings;
 
+import com.spazepay.model.User;
 import com.spazepay.model.enums.InterestHandling;
 import com.spazepay.model.enums.PlanStatus;
-import com.spazepay.model.enums.SavingsType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,9 +11,9 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "savings_plans")
+@Table(name = "flexible_plans")
 @Data
-public class SavingsPlan {
+public class FlexiblePlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,14 +39,10 @@ public class SavingsPlan {
     @Column(name = "matured_at")
     private LocalDateTime maturedAt;
 
-    @Enumerated(EnumType.STRING)
-    private SavingsType type; // To differentiate Flexible, Target, Fixed
-
     @Column(precision = 19, scale = 2)
     private BigDecimal accruedInterest = BigDecimal.ZERO;
 
-    // Constructors
-    public SavingsPlan() {
+    public FlexiblePlan() {
         this.createdAt = Instant.now();
         this.status = PlanStatus.ACTIVE;
     }
