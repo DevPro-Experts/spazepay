@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,16 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    @ExceptionHandler(SavingsException.class)
+    public ResponseEntity<Object> handleSavingsException(SavingsException ex) {
+        logger.error("Handling SavingsException: {} - {}", ex.getErrorCode(), ex.getMessage());
+        Map<String, Object> body = new HashMap<>();
+        body.put("error", ex.getErrorCode());
+        body.put("message", ex.getMessage());
+        body.put("timestamp", Instant.now().toString());
+        return new ResponseEntity<>(body, getHttpStatus(ex.getErrorCode()));
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
@@ -45,6 +56,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> body = new HashMap<>();
         body.put("error", "Invalid Request");
         body.put("message", ex.getMessage());
+        body.put("timestamp", Instant.now().toString());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
@@ -54,6 +66,28 @@ public class GlobalExceptionHandler {
         Map<String, Object> body = new HashMap<>();
         body.put("error", "Authentication Failed");
         body.put("message", ex.getMessage());
+        body.put("timestamp", Instant.now().toString());
         return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
+
+    private HttpStatus getHttpStatus(String errorCode) {
+        switch (errorCode) {
+            case "MAX_PLANS_REACHED":
+            case "INSUFFICIENT_PLAN_BALANCE":
+            case "INSUFFICIENT_BALANCE":
+            case "ALREADY_IN_GROUP":
+            case "GROUP_FULL":
+            case "INACTIVE_MEMBER":
+            case "GROUP_TOO_SMALL":
+            case "INCOMPLETE_CONTRIBUTIONS":
+            case "PAYOUTS_STARTED":
+            case "PLAN_NOT_FOUND":
+                return HttpStatus.BAD_REQUEST;
+            case "NOT_AUTHORIZED":
+                return HttpStatus.FORBIDDEN;
+            default:
+                logger.warn("Unknown error code: {}. Defaulting to BAD_REQUEST", errorCode);
+                return HttpStatus.BAD_REQUEST;
+        }
     }
 }

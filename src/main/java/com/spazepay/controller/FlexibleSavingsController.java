@@ -3,7 +3,7 @@ package com.spazepay.controller;
 import com.spazepay.dto.savings.*;
 import com.spazepay.dto.transaction.SavingsTransactionResponse;
 import com.spazepay.model.User;
-import com.spazepay.service.SavingsService;
+import com.spazepay.service.FlexibleSavingsService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -17,12 +17,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/savings/flexible")
-public class SavingsController {
+public class FlexibleSavingsController {
 
-    private static final Logger logger = LoggerFactory.getLogger(SavingsController.class);
+    private static final Logger logger = LoggerFactory.getLogger(FlexibleSavingsController.class);
 
     @Autowired
-    private SavingsService savingsService;
+    private FlexibleSavingsService savingsService;
 
     @PostMapping("/create")
     public ResponseEntity<SavingsPlanResponse> createFlexiblePlan(@AuthenticationPrincipal User user,
@@ -85,5 +85,15 @@ public class SavingsController {
         logger.info("Fetching transactions for plan: {}", planId);
         List<SavingsTransactionResponse> transactions = savingsService.getTransactionsForPlan(user, planId);
         return ResponseEntity.ok(transactions);
+    }
+
+    @PostMapping("/{planId}/accrued-interest")
+    public ResponseEntity<AccruedInterestResponse> getAccruedInterest(
+            @AuthenticationPrincipal User user,
+            @PathVariable Long planId,
+            @Valid @RequestBody AccruedInterestRequest request) {
+        logger.info("Fetching accrued interest for plan: {} from {} to {}", planId, request.getStartDate(), request.getEndDate());
+        AccruedInterestResponse response = savingsService.getAccruedInterest(user, planId, request);
+        return ResponseEntity.ok(response);
     }
 }

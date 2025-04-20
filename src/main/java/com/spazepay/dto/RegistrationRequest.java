@@ -1,7 +1,9 @@
 package com.spazepay.dto;
 
+import com.spazepay.model.agevalidator.MinimumAge;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -13,10 +15,12 @@ public class RegistrationRequest {
 
     @NotNull(message = "Date of birth is required")
     @Past(message = "Date of birth must be in the past")
+    @MinimumAge(value = 18, message = "You must be at least 18 years old")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) // enforces "YYYY-MM-DD"
     private LocalDate dateOfBirth;
 
     @NotBlank(message = "Gender is required")
-    @Pattern(regexp = "^(Male|Female|Other)$", message = "Gender must be Male, Female, or Other")
+    @Pattern(regexp = "^(Male|Female)$", message = "Gender must be Male or Female")
     private String gender;
 
     @NotBlank(message = "Address is required")
@@ -37,7 +41,11 @@ public class RegistrationRequest {
     private String email;
 
     @NotBlank(message = "Password is required")
-    @Size(min = 8, message = "Password must be at least 8 characters")
+    @Size(min = 8, max = 128, message = "Password must be between 8 and 128 characters")
+    @Pattern(
+            regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
+            message = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character (@$!%*?&)"
+    )
     private String password;
 
     @NotBlank(message = "BVN or NIN is required")
